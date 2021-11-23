@@ -14,9 +14,13 @@
 
          <input type="text" name="postadress" id="postadress" placeholder="Postadress" v-model="form.postAdress" />
 
-         <input type="text" name="phonenumber" id="phonenumber" placeholder="phonenumber" v-model="form.phoneNumber" />
+         <input type="text" name="phonenumber" id="phonenumber" placeholder="Phonenumber" v-model="form.phoneNumber" />
 
          <input type="number" name="email" id="email" placeholder="E-mail" v-model="form.email" />
+
+         <label>
+            Fødselsdato
+         </label>
 
          <select class="select-birthday" name="date" id="birthday">
             <option value="--">--</option>
@@ -134,6 +138,9 @@
             <option value="1961">1961</option>
             <option value="1960">1960</option>
          </select>
+
+         <input type="text" name="message" id="message" placeholder="Message" v-model="form.message" />
+
       </fieldset>
    </form>
 </template>
