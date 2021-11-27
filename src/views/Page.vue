@@ -1,16 +1,5 @@
-<template>
-</template>
+<template></template>
 
-<script>
-export default {
+<script></script>
 
-}
-</script>
-
-<style>
-
-body {
-   background-color: red;
-}
-
-</style>
+<style></style>
