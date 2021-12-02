@@ -1,19 +1,8 @@
 <template>
 	<RouterView />
-	<ContactForm />
-	<Quizapp />
 </template>
 
 <script>
-import ContactForm from '../components/ContactForm.vue';
-import Quizapp from '../components/Quizapp.vue';
-
-export default {
-	components: {
-		ContactForm,
-		Quizapp,
-	},
-};
 </script>
 
 <style>

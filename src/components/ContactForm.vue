@@ -1,7 +1,7 @@
 <template>
 	<form>
 		<fieldset class="fieldset">
-			<legend class="legend">Innmeldingsskjema</legend>
+			<legend class="legend">Contact Form</legend>
 
 			<input
 				type="text"

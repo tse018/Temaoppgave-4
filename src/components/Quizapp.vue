@@ -9,7 +9,7 @@
 
 		<!-- Contains all the clickable answer choices, depending on which question you are currently on.
 		(NOTE: This can be better solved with v-for, have to take a look at it )
-		 -->
+		-->
 		<div class="quiz-app__answers-container">
 			<p class="quiz-app__answers-container--answers" @click="checkAnswer">
 				{{ questionsList[questionIndex].answers[0] }}

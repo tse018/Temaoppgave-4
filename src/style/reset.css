@@ -5,6 +5,11 @@
    padding: 0;
 }
 
+button {
+   border: 0;
+   background: transparent;
+}
+
 /* reset forms */
 button,
 input,
