@@ -134,6 +134,10 @@ export default {
 
 <style>
 .quiz-app {
+	position: absolute;
+	top: 50px;
+	left: 500px;
+	width: 200px;
 	background-color: lightgray;
 	border: 2px solid black;
 	max-width: 75ch;

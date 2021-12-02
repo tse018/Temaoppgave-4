@@ -8,11 +8,11 @@
 
       <div class="todo__main">
          <div class="todo__items">
-            <div v-for ="(task, index) in pendingTasks" :text="task.text" :done ="task.done" :key="task.id" />
+            <div class="todo__task" v-for ="(task, index) in pendingTasks" :text="task.text" :done ="task.done" :key="task.id" />
          </div>
 
          <div class="todo__itemsDone">
-            <div v-for="(task, index) in doneTasks" :text="task.text" :done="task.done" :key="task.id" />
+            <div class="todo__taskDone" v-for="(task, index) in doneTasks" :text="task.text" :done="task.done" :key="task.id" />
          </div>
       </div>
 
@@ -33,14 +33,16 @@
       data() {
          return {
             title: 'To Do',
+
             tasks: [
-               { text: 'Drive to the moon', done: false},
-               { text: 'Turn up temprature', done: false},
-               { text: 'Learn vue js', done: false},
-               { text: 'finish tema4', done: false},
-               { text: 'Buy delicious food', done: true },
-               { text: 'Drive to the moon', done: true},
-               { text: 'Drive to the moon', done: true},
+               { text: 'Drive to the moon',        done: false},
+               { text: 'Turn up the temprature',   done: false},
+               { text: 'Learn how to use vue',     done: false},
+               { text: 'Consult about the future', done: false},
+               { text: 'Finish tema 4 project',    done: false},
+               { text: 'Buy delicious food',       done: true},
+               { text: 'Drive to the moon',        done: true},
+               { text: 'Drive to the moon',        done: false},         
             ],
          };
       },
@@ -79,11 +81,11 @@
 
 <style>
    .todo {
-      position: relative;
+      position: absolute;
       width: 20vw;
       height: 70vh;
-      top: 20px;
-      left: 300px;
+      bottom: 20px;
+      right: 10px;
       background: #EEEE;
       border: 2px solid black;
    }

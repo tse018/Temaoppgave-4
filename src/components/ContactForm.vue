@@ -1,57 +1,37 @@
 <template>
-	<form>
-		<fieldset class="fieldset">
-			<legend class="legend">Contact Form</legend>
+	<form class="contact">
+		<fieldset class="contact__field">
+			<legend class="contact__title">
+				Contact us
+			</legend>
 
-			<input
-				type="text"
-				name="firstname"
-				id="firstame"
-				placeholder="First name"
-				v-model="form.firstName"
-			/>
+			<label> 
+				<input class="contact__firstname" type="text" name="firstname" id="firstame" placeholder="First name" v-model="form.firstName" />
+			</label>
 
-			<input
-				type="text"
-				name="lastname"
-				id="lastname"
-				placeholder="Last name"
-				v-model="form.lastName"
-			/>
+			<label>
+				<input class="contact__lastname" type="text" name="lastname" id="lastname" placeholder="Last name" v-model="form.lastName" />
+			</label>
 
-			<input
-				type="text"
-				name="adress"
-				id="address"
-				placeholder="Adress"
-				v-model="form.address"
-			/>
+			<label>
+				<input class="contact__adress" type="text" name="adress" id="address" placeholder="Adress" v-model="form.address" />
+			</label>
 
-			<input
-				type="text"
-				name="postadress"
-				id="postadress"
-				placeholder="Postadress"
-				v-model="form.postAdress"
-			/>
+			<label>
+				<input class="contact__postadress" type="text" name="postadress" id="postadress" placeholder="Postadress" v-model="form.postAdress" />
+			</label>
 
-			<input
-				type="text"
-				name="phonenumber"
-				id="phonenumber"
-				placeholder="Phonenumber"
-				v-model="form.phoneNumber"
-			/>
+			<label>
+				<input class="contact__phonenumber" type="text" name="phonenumber" id="phonenumber" placeholder="Phonenumber" v-model="form.phoneNumber" />
+			</label>
 
-			<input
-				type="number"
-				name="email"
-				id="email"
-				placeholder="E-mail"
-				v-model="form.email"
-			/>
+			<label>
+				<input class="contact__email" type="text" name="email" id="email" placeholder="E-mail" v-model="form.email" />
+			</label>
 
-			<label> Fødselsdato </label>
+			<label class="contact__label">
+				Fødselsdato 
+			</label>
 
 			<select class="select-birthday" name="date" id="birthday">
 				<option value="--">--</option>
@@ -170,13 +150,7 @@
 				<option value="1960">1960</option>
 			</select>
 
-			<input
-				type="text"
-				name="message"
-				id="message"
-				placeholder="Message"
-				v-model="form.message"
-			/>
+			<input class="contact__message" type="text" name="message" id="message" placeholder="Message" v-model="form.message" />
 		</fieldset>
 	</form>
 </template>
@@ -185,16 +159,6 @@
 export default {
 	data() {
 		return {
-			props: {
-				firstName: String,
-				lastName: String,
-				address: String,
-				postAdress: Number,
-				birthday: Number,
-				phoneNumber: Number,
-				email: String,
-				message: String,
-			},
 
 			form: {
 				firstName: null,
@@ -215,4 +179,19 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+	.contact {
+		position: relative;
+		top: 500px;
+		left: 10px;
+		width: 30vw;
+	}
+
+	.contact__form {
+		position: absolute;
+	}
+
+	.contact__title {
+		font-size: 60px;
+	}
+</style>
