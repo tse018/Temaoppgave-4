@@ -134,7 +134,7 @@ export default {
 
 <style>
 .quiz-app {
-	position: absolute;
+	position: relative;
 	top: 50px;
 	left: 500px;
 	width: 200px;

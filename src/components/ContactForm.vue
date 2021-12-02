@@ -181,14 +181,14 @@ export default {
 
 <style>
 	.contact {
-		position: relative;
-		top: 500px;
-		left: 10px;
+		position: absolute;
+		top: 600px;
+		left: 600px;
 		width: 30vw;
 	}
 
 	.contact__form {
-		position: absolute;
+		position: relative;
 	}
 
 	.contact__title {
