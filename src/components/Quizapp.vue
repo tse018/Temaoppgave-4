@@ -11,7 +11,7 @@
 		(NOTE: This can be better solved with v-for, have to take a look at it )
 		-->
 		<div class="quiz-app__answers-container">
-			<p class="quiz-app__answers-container--answers" @click="checkAnswer">
+			<!-- <p class="quiz-app__answers-container--answers" @click="checkAnswer">
 				{{ questionsList[questionIndex].answers[0] }}
 			</p>
 
@@ -25,6 +25,14 @@
 
 			<p class="quiz-app__answers-container--answers" @click="checkAnswer">
 				{{ questionsList[questionIndex].answers[3] }}
+			</p> -->
+
+			<p
+				@click="checkAnswer"
+				class="quiz-app__answers-container--answers"
+				v-for="question in currentQuestion.answers"
+			>
+				{{ question }}
 			</p>
 		</div>
 
@@ -38,6 +46,9 @@
 export default {
 	data() {
 		return {
+			//Variable used to iterate between the
+			questionIndex: 0,
+
 			//Contains all the questions which gets iterated by questionIndex.
 			questionsList: [
 				{
@@ -72,11 +83,15 @@ export default {
 				},
 			],
 
-			//Variable used to iterate between the
-			questionIndex: 0,
-
 			outputText: 'Output text here',
 		};
+	},
+
+	computed: {
+		//computes the current question
+		currentQuestion() {
+			return this.questionsList[this.questionIndex];
+		},
 	},
 
 	methods: {
