@@ -40,7 +40,7 @@
 
       methods: {
          previousImage() {
-            this.index = (this.index === 0) ? this.slides.length - 1 : tbis.index - 1;
+            this.index = (this.index === 0) ? this.slides.length - 1 : this.index - 1;
          },
 
          nextImage() {
