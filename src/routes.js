@@ -1,7 +1,13 @@
-import Home from './views/Home.vue'
-import Page from './views/Page.vue'
+import Home from './views/Home.vue';
+import Slideshow from './views/Slideshow.vue';
+import ContactForm from './views/ContactForm.vue';
+import Quizapp from './views/Quizapp.vue';
+import TodoList from './components/TodoList.vue';
 
 export default [
    { name: 'home', path: '/', component: Home },
-   { name: 'page', path: '/page', component: Page }
+   { name: 'slideshow', path: '/slideshow', component: Slideshow },
+   { name: 'contactform', path: '/contactform', component: ContactForm },
+   { name: 'quizapp', path: '/quizapp', component: Quizapp },
+   { name: 'todolist', path: '/todolist', component: TodoList },
 ]
