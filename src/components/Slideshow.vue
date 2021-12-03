@@ -1,8 +1,5 @@
 <template>
    <div class="slideshow">
-      <div class="slideshow__title">
-         {{ title }}
-      </div>
 
       <div class="slideshow__slides">
          <figure class="slideshow__slide">
@@ -25,7 +22,6 @@
    export default {
       data() {
          return {
-            title: 'Slideshow',
             index: 0,
             showCaption: false,
             slides: [
@@ -59,7 +55,4 @@
 </script>
 
 <style>
-   .slideshow {
-      position: relative;
-   }
 </style>
