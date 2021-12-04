@@ -120,31 +120,5 @@
 
 
 <style>
-   .table {
-      position: relative;
-      top: 20px;
-      width: 500px;
-      height: 100px;
-      border-collapse: collapse;
-   }
 
-   .table__header {
-      border: 2px solid red;
-      height: 50px;
-   }
-
-   .table__item {
-      cursor: pointer;
-   }
-
-   .table__click {
-      cursor: pointer;
-   }
-
-
-
-   .table__controller {
-      position: relative;
-      top: 20px;
-   }
 </style>

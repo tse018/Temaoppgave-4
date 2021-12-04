@@ -1,9 +1,5 @@
 <template>
 	<ContactForm />
-	<SortTable />
-	<Slideshow />
-	<Quizapp />
-	<TodoList />
 </template>
 
 <script>

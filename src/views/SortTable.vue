@@ -1,13 +1,13 @@
 <template>
-	<TodoList />
+	<SortTable />
 </template>
 
 <script>
-import TodoList from '../components/TodoList.vue';
+import SortTable from '../components/SortTable.vue';
 
 export default {
 	components: {
-		TodoList,
+		SortTable,
 	},
 };
 </script>
