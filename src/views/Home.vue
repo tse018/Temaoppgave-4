@@ -1,17 +1,16 @@
 <template>
-<!--
-	<Collapsible v-model:title="titles.contact" class="contactform">
+
+	<Collapsible v-model:title="titles.contact">
 		<ContactForm />
 	</Collapsible>
 
-	<Collapsible v-model:title="titles.slideshow" class="slideshow">
+	<Collapsible v-model:title="titles.slideshow">
 		<SlideShow />
 	</Collapsible>
-	-->
 
-	<ContactForm />
-
-	<SlideShow />
+	<Collapsible v-model:title="titles.quiz">
+		<Quizapp />
+	</Collapsible>
 
 
 </template>
@@ -47,7 +46,6 @@
 		},
 	}
 </script>
-
 
 <style>
 </style>

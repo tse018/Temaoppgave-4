@@ -73,10 +73,9 @@
 
 <style>
    .slideshow {
-      position: absolute;
-      top: 20;
+      position: relative ;
+      top: 10;
       width: 500px;
-      left: 250px;
       bottom: 80px;
    }
 

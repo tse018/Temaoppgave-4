@@ -1,22 +1,17 @@
 <template>
    <div class="collapsible">
-      <button @click="toggleDetails" class="collapsible__summary">
-         <div :class="`collapsible__arrow ${ !collapsed ? 'collapsible__arrow--rotated' : '' }`">
-            <svg viewBox="0 0 36 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-               <path d="M36 21L1.8571e-06 41.7846L3.67415e-06 0.21539L36 21Z" fill="black" />
-            </svg>
 
-            
-            <div class="collapsible__title">
-               {{ title }}
-            </div>
-            
-         </div>
+      <div class="collapsible__title">
+         {{ title }}
+      </div>
+      
+      <button @click="toggleDetails" :class="`fas fa-chevron-circle-right${ !collapsed ? 'fas fa-caret-square-down' : ' ' }`">
       </button>
 
-      <div class="collapsible__details" v-if="!collapsed">
+      <div class="collapsible__components" v-if="!collapsed">
          <slot />
       </div>
+
    </div>
 </template>
 
@@ -44,32 +39,93 @@
 </script>
 
 <style>
-   .collapsible {
-      background: #eee;
-      border-radius: 0.3em;
-      display: flex;
-      widows: 100vw;
-      height: 10vh;
+   /* 
+
+      Hard coding but works for now,
+      I just want to get done with this
+
+   */
+
+   /******* Contact form  **********/
+
+   .collapsible:nth-child(1) {
+      position: absolute;
+      top: 10px;
+      left: 20px;
    }
 
-   .collapsible__summary {
-      flex-flow: row nowrap;
-      align-items: center;
+   .collapsible__title:nth-child(1) {
+      position: relative;
+      left: 50px;
+      font-size: 30px;
    }
 
-   .collapsible__summary,
-   .collapsible__details {
-      padding: 0.5em;
+   .fa-chevron-circle-right:nth-child(1) {
+      position: relative;
+      left: 100px;
+      font-size: 40px;
    }
 
-   .collapsible__arrow{
-      padding-left: 1.7em;
-      padding-top: 0;
-      display: flex;
+   .fa-caret-square-down:nth-child(1) {
+      position: relative;
+      left: 100px;
+      font-size: 40px;
    }
 
-   .collapsible__arrow--rotated {
-      transform: rotate(90deg)
+   /****** Slide show *******/
+
+   .collapsible:nth-child(2) {
+      position: absolute;
+      top: 10px;
+      left: 300px;
    }
+
+   .collapsible__title:nth-child(2) {
+      position: relative;
+      left: 100px;
+      font-size: 30px;
+   }
+
+   .fa-chevron-circle-right:nth-child(2) {
+      position: relative;
+      left: 100px;
+      font-size: 40px;
+   }
+
+   .fa-caret-square-down:nth-child(2) {
+      position: relative;
+      left: 100px;
+      font-size: 40px;
+   }
+
+   /******* Quiz ********/
+   .collapsible:nth-child(3) {
+      position: absolute;
+      top: 10px;
+      left: 800px;
+   }
+
+   .collapsible__title:nth-child(3) {
+      position: relative;
+      left: 100px;
+      font-size: 30px;
+   }
+
+   .fa-chevron-circle-right:nth-child(3) {
+      position: relative;
+      left: 100px;
+      font-size: 40px;
+   }
+
+   .fa-caret-square-down:nth-child(3) {
+      position: relative;
+      left: 100px;
+      font-size: 40px;
+   }
+
+
+
+
+
 
 </style>

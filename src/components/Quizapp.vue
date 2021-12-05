@@ -149,13 +149,12 @@ export default {
 
 <style>
 .quiz-app {
-	position: absolute;
-	top: -150px;
-	left: 700px;
+	position: relative;
+	top: 20px;
+	left: 50px;
+	max-width: 400px;
 	background-color: lightgray;
 	border: 2px solid black;
-	max-width: 75ch;
-	margin: 10rem auto;
 	border-radius: 2px;
 }
 
