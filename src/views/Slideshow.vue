@@ -1,15 +1,16 @@
 <template>
-	<Slideshow />
+	<SlideShow />
 </template>
 
 <script>
-import Slideshow from '../components/Slideshow.vue';
+import SlideShow from '../components/SlideShow.vue';
 
 export default {
 	components: {
-		Slideshow,
+		SlideShow,
 	},
 };
 </script>
 
-<style></style>
+<style>
+</style>

@@ -42,23 +42,23 @@
 
 			<input class="contact__focus" type="text" name="mail" placeholder="mail" v-model="form.email" />
 
-			<label> 
-				hjhk
+			<label class="contact__label--issue" for="issue"> 
+				Pick your issue listed below
 			</label>
 
-			<select class="contact__issues" name="issues-options">
+			<select class="contact__select" name="issues-options">
 
-				<option v-bind:value="`${issues}`" v-for="(issues, index) in options.issues">
+				<option v-bind:value="issues" v-for="(issues, index) in options.issues">
 					{{ issues }}
 				</option>
 
 			</select>
 
 			<label class="contact__label--message" for="message">
-				Add additional information
+				Additional information
 			</label>
 
-			<textarea class="contact__focus--message" type="textarea" name="message" placeholder="Add additional information" v-model="form.message" />
+			<textarea class="contact__focus--message" type="textarea" name="message" placeholder="Additional information" v-model="form.message" />
 
 			<button class="contact__submit" @click="submit_form">
 				Submit
@@ -101,9 +101,10 @@ export default {
 
 <style>
 	.contact {
-		position: relative;
+		position: absolute;
 		left: 20px;
 		width: 200px;
+
 	}
 	
 	.contact__field {
@@ -128,25 +129,29 @@ export default {
 		padding: 15px 0 0 7px;
 	}
 
-	.contact__issues {
+	.contact__select {
 		position: relative;
-		margin: 20px 0 20px 0;
 		top: 10px;
 		left: 20px;
 	}
 
+	.contact__label--issue {
+		position: relative;
+		top: 5px;
+		left: 8px;
+	}
+
 	.contact__label--message {
-		position: absolute;
-		bottom: 200px;
-		left: 28px;
+		position: relative;
+		top: 30px;
+		left: 20px;
 	}
 
 	.contact__focus--message {
 		height: 150px;
-		margin: 0 0 0 10px;
-		padding: 25px 0 0 15px;
+		margin: 0 0 0 5px;
+		padding: 25px 0 0 14px;
 	}
-
 
 	.contact__submit {
 		margin: 10px 0 15px 10px;
