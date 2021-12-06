@@ -39,12 +39,12 @@
             index: 0,
             showDetails: false,
             slides: [
-               { title: 'firstImage', caption: 'landscape', file: 'assets/bilde1.jpeg' },
-               { title: 'secondImage', caption: 'landscape', file: 'assets/bilde2.jpeg' },
-               { title: 'thirdImage', caption: 'landscape', file: 'assets/bilde3.jpeg' },
-               { title: 'fourthImage', caption: 'landscape', file: 'assets/bilde4.jpeg' },
-               { title: 'fifthImage', caption: 'landscape', file: 'assets/bilde4.jpeg' },
-               { title: 'sixthImage', caption: 'landscape', file: 'assets/bilde5.jpeg' },
+               { title: 'firstImage', caption: 'bilde1', file: 'assets/bilde1.jpeg' },
+               { title: 'secondImage', caption: 'bilde2', file: 'assets/bilde2.jpeg' },
+               { title: 'thirdImage', caption: 'bilde3', file: 'assets/bilde3.jpeg' },
+               { title: 'fourthImage', caption: 'bilde4', file: 'assets/bilde4.jpeg' },
+               { title: 'fifthImage', caption: 'bilde5', file: 'assets/bilde5.jpeg' },
+               { title: 'sixthImage', caption: 'bilde6', file: 'assets/bilde6.jpeg' },
             ],
          };
       },

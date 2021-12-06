@@ -5,7 +5,7 @@
 	</Collapsible>
 
 	<Collapsible v-model:title="titles.slideshow">
-		<SlideShow />
+		<Slideshow />
 	</Collapsible>
 
 	<Collapsible v-model:title="titles.quiz">
@@ -17,7 +17,7 @@
 
 <script>
 	import ContactForm from '../components/ContactForm.vue';
-	import SlideShow from '../components/SlideShow.vue';
+	import Slideshow from '../components/Slideshow.vue';
 	import SortTable from '../components/SortTable.vue';
 	import Quizapp from '../components/Quizapp.vue';
 	import TodoList from '../components/TodoList.vue';
@@ -26,7 +26,7 @@
 	export default {	
 		components: {
 			ContactForm,
-			SlideShow,
+			Slideshow,
 			Quizapp,
 			SortTable,
 			TodoList,

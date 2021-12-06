@@ -1,13 +1,13 @@
 <template>
-	<SlideShow />
+	<Slideshow />
 </template>
 
 <script>
-import SlideShow from '../components/SlideShow.vue';
+import Slideshow from '../components/Slideshow.vue';
 
 export default {
 	components: {
-		SlideShow,
+		Slideshow,
 	},
 };
 </script>

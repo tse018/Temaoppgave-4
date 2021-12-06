@@ -49,7 +49,7 @@
    /******* Contact form  **********/
 
    .collapsible:nth-child(1) {
-      position: absolute;
+      position: relative;
       top: 10px;
       left: 20px;
    }
@@ -81,8 +81,7 @@
    }
 
    .collapsible__title:nth-child(2) {
-      position: relative;
-      left: 100px;
+      position: absolute;
       font-size: 30px;
    }
 
