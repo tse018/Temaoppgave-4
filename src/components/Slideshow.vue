@@ -117,7 +117,6 @@ export default {
 }
 
 .slideshow__container {
-	border: 5px dotted gray;
 	height: 640px;
 	width: 500px;
 }
