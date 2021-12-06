@@ -3,13 +3,14 @@
 		<div class="collapsible__top-container">
 			<button
 				@click="toggleDetails"
-				:class="`collapsible__arrow fas fa-chevron-circle-right${
+				:class="`collapsible__arrow fa-lg fas fa-chevron-circle-right${
 					!collapsed ? 'fas fa-caret-square-down' : ' '
 				}`"
-			></button>
-			<div class="collapsible__title">
-				{{ title }}
-			</div>
+			>
+				<div class="collapsible__title">
+					{{ title }}
+				</div>
+			</button>
 		</div>
 
 		<div class="collapsible__components" v-if="!collapsed">
@@ -45,107 +46,31 @@ export default {
 .collapsible {
 	display: flex;
 	flex-direction: column;
-	width: 288px;
+	margin: 0 auto;
+	max-width: 550px;
 }
 
 .collapsible__top-container {
-	display: flex;
-	align-items: center;
 	background: #efefef;
 	border-radius: 2px;
-	padding: 0.5rem 1rem;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-	margin-bottom: 1rem;
 }
 
-.collapisble__arrow {
-	margin-right: 1rem;
-	align-self: center;
+.collapsible__arrow {
+	display: inline-block;
+	padding: 0.8em 1em;
 }
+
 .collapsible__title {
+	display: inline-block;
+	font-family: 'Roboto', sans-serif;
 	font-weight: bold;
 	margin-left: 1rem;
-}
-/* 
-
-      Hard coding but works for now,
-      I just want to get done with this
-
-   */
-
-/******* Contact form  **********/
-
-/* .collapsible:nth-child(1) {
-	position: relative;
-	top: 10px;
-	left: 20px;
+	font-size: 1.5rem;
 }
 
-.collapsible__title:nth-child(1) {
-	position: relative;
-	left: 50px;
-	font-size: 30px;
-}
-
-.fa-chevron-circle-right:nth-child(1) {
-	position: relative;
-	left: 100px;
-	font-size: 40px;
-}
-
-.fa-caret-square-down:nth-child(1) {
-	position: relative;
-	left: 100px;
-	font-size: 40px;
-} */
-
-/****** Slide show *******/
-
-/* .collapsible:nth-child(2) {
-	position: absolute;
-	top: 10px;
-	left: 300px;
-}
-
-.collapsible__title:nth-child(2) {
-	position: absolute;
-	font-size: 30px;
-}
-
-.fa-chevron-circle-right:nth-child(2) {
-	position: relative;
-	left: 100px;
-	font-size: 40px;
-}
-
-.fa-caret-square-down:nth-child(2) {
-	position: relative;
-	left: 100px;
-	font-size: 40px;
-} */
-
-/******* Quiz ********/
-/* .collapsible:nth-child(3) {
-	position: absolute;
-	top: 10px;
-	left: 800px;
-}
-
-.collapsible__title:nth-child(3) {
-	position: relative;
-	left: 100px;
-	font-size: 30px;
-}
-
-.fa-chevron-circle-right:nth-child(3) {
-	position: relative;
-	left: 100px;
-	font-size: 40px;
-}
-
-.fa-caret-square-down:nth-child(3) {
-	position: relative;
-	left: 100px;
-	font-size: 40px;
-} */
+/* @media (min-width: 500px) {
+	.contact {
+		background: red;
+	} */
 </style>
