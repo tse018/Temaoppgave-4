@@ -1,10 +1,14 @@
 <template>
 	<div class="quiz-app">
-		<h2>Quiz App</h2>
+		<h2>
+			Quiz App
+		</h2>
 
 		<!-- Contains the current question determined by questionIndex. -->
 		<div class="quiz-app__question">
-			<p>{{ questionsList[questionIndex].question }}</p>
+			<p>
+				{{ questionsList[questionIndex].question }}
+			</p>
 		</div>
 
 		<!-- Contains all the clickable answer choices, depending on which question you are currently on.
@@ -27,18 +31,20 @@
 				{{ questionsList[questionIndex].answers[3] }}
 			</p> -->
 
-			<p
-				@click="checkAnswer"
-				class="quiz-app__answers-container--answers"
-				v-for="question in currentQuestion.answers"
-			>
+			<p @click="checkAnswer" class="quiz-app__answers-container--answers" v-for="question in currentQuestion.answers">
 				{{ question }}
 			</p>
 		</div>
 
 		<!-- Outputs whether the answer you clicked is correct or incorrect -->
-		<p>{{ outputText }}</p>
-		<button @click="nextQuestion">Next question</button>
+		<p>
+			{{ outputText }}
+		</p>
+
+		<button @click="nextQuestion">
+			Next question
+		</button>
+
 	</div>
 </template>
 
