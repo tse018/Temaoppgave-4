@@ -1,17 +1,17 @@
 /* reset all elements */
 * {
-   box-sizing: border-box;
-   margin: 0;
-   padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 img {
-   width: 100%;
+	width: 100%;
 }
 
 button {
-   border: 0;
-   background: transparent;
+	border: 0;
+	background: transparent;
 }
 
 /* reset forms */
@@ -19,22 +19,50 @@ button,
 input,
 select,
 textarea {
-   font-family: inherit;
-   font-size: 100%;
-   box-sizing: border-box;
-   padding: 0;
-   margin: 0;
+	font-family: inherit;
+	font-size: 100%;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
 }
 
 body {
-   line-height: 1.5;
+	line-height: 1.5;
 }
 
 ol,
 ul {
-   list-style: none;
+	list-style: none;
 }
 
 li {
-   text-decoration: none;
+	text-decoration: none;
+}
+
+/* Normalize to reset inputs, textfields, buttons, etc */
+button,
+input,
+optgroup,
+select,
+textarea,
+html input[type='button'],
+input[type='reset'],
+input[type='submit'],
+button[disabled],
+html input[disabled],
+button::-moz-focus-inner,
+input::-moz-focus-inner,
+input[type='checkbox'],
+input[type='radio'],
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button,
+input[type='search'],
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-decoration {
+	border: none;
+	background-image: none;
+	background-color: transparent;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
 }
