@@ -1,17 +1,15 @@
 <template>
-	<div class="components-container">
-		<Collapsible v-model:title="titles.contact">
-			<ContactForm />
-		</Collapsible>
+	<Collapsible v-model:title="titles.contact">
+		<ContactForm />
+	</Collapsible>
 
-		<Collapsible v-model:title="titles.slideshow">
+	<!-- <Collapsible v-model:title="titles.slideshow">
 			<Slideshow />
 		</Collapsible>
 
 		<Collapsible v-model:title="titles.quiz">
 			<Quizapp />
-		</Collapsible>
-	</div>
+		</Collapsible> -->
 </template>
 
 <script>
@@ -45,11 +43,3 @@ export default {
 	},
 };
 </script>
-
-<style>
-.components-container {
-	position: relative;
-	display: inline-block;
-	margin-right: 100px;
-}
-</style>
