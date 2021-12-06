@@ -6,12 +6,7 @@
 			<label class="contact__label" for="firstname"> First name </label>
 
 			<input
-				class="contact__focus"
-				type="text"
-				name="firstname"
-				placeholder="First name"
-				v-model="form.firstName"
-			/>
+				class="contact__focus" type="text" name="firstname" placeholder="First name" v-model="form.firstName"/>
 
 			<label class="contact__label" for="lastname"> Last name </label>
 

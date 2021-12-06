@@ -1,7 +1,8 @@
 <template>
 	<div class="collapsible">
 		<div class="collapsible__top-container">
-			<button @click="toggleDetails" :class="`collapsible__arrow fas fa-chevron-circle-right${!collapsed ? 'fas fa-caret-square-down' : ' '}`"> 
+
+			<button @click="toggleDetails" :class="`collapsible__arrow fas fa-chevron-circle-right${!collapsed ? 'fas fa-caret-square-down' : ''}`"> 
 			</button>
 
 			<div class="collapsible__title">
