@@ -1,20 +1,19 @@
 <template>
 	<div class="collapsible">
 		<div class="collapsible__top-container">
-			<button
-				@click="toggleDetails"
-				:class="`collapsible__arrow fas fa-chevron-circle-right${
-					!collapsed ? 'fas fa-caret-square-down' : ' '
-				}`"
-			></button>
+			<button @click="toggleDetails" :class="`collapsible__arrow fas fa-chevron-circle-right${!collapsed ? 'fas fa-caret-square-down' : ' '}`"> 
+			</button>''
+
 			<div class="collapsible__title">
 				{{ title }}
 			</div>
+
 		</div>
 
 		<div class="collapsible__components" v-if="!collapsed">
 			<slot />
 		</div>
+
 	</div>
 </template>
 
@@ -62,6 +61,7 @@ export default {
 	margin-right: 1rem;
 	align-self: center;
 }
+
 .collapsible__title {
 	font-weight: bold;
 	margin-left: 1rem;

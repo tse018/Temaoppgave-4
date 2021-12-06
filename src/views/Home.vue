@@ -11,6 +11,10 @@
 		<Collapsible v-model:title="titles.quiz">
 			<Quizapp />
 		</Collapsible>
+
+		<Collapsible v-model:title="titles.sorttable">
+			<SortTable />
+		</Collapsible>
 	</div>
 </template>
 
