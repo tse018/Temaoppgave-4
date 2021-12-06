@@ -151,7 +151,6 @@ export default {
 .quiz-app {
 	position: relative;
 	top: 20px;
-	left: 50px;
 	max-width: 400px;
 	background-color: lightgray;
 	border: 2px solid black;
