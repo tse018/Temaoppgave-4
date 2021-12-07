@@ -1,26 +1,40 @@
 <template>
-	<div class="todo">
-		<div class="todo__header">
-			<h1 class="todo__title">
+   <div class="todo">
+      <div class="todo__header">
+
+         <div class="todo__title">
             {{ title }}
-         </h1>
-		</div>
+         </div>
 
-		<div class="todo__content">
-			<div class="todo__items">
-				<TodoItem @done-task="doneTask" @remove-task="removeTask" v-for="task in pendingTasks" :task="task" />
-			</div>
+         <button @click="addTask">
+            <TodoIcons :font="'add'" />
+         </button>
+      </div>
 
+      <div class="todo__content">
+         <template v-if="tasks.length > 0 && seperatingLists">
+            
+            <div class="todo__items">
 
-			<div class="todo__items">
-				<TodoItem @done-task="doneTask" @remove-task="removeTask" v-for="task in doneTasks" :task="task" />
-			</div>
+               <TodoItem @update="updateTask" @done="doneTask" @remove="removeTask" v-for="task in pendingTasks" :task="task" />
 
-         <button @click="addTask" class="todo__add-new">
-				<TodoIcon :icon="'add'" />
-			</button>
-		</div>
-	</div>
+            </div>
+
+            <hr class="todo__seperator" v-if="doneTasks.length > 0 && pendingTasks.length > 0" />
+
+            <TodoItem @update="updateTask" @done="doneTask" @remove="removeTask" v-for="task in doneTasks" :task="task" />
+
+         </template>
+
+         <template v-else>
+
+            <TodoItem @update="updateTask" @done="doneTask" @remove="removeTask" v-for="task in tasks" :task="task" />
+
+         </template>
+         
+         <button v-if="tasks.length === 0" @click="addTask">Click to add a new task </button>
+      </div>
+   </div>
 </template>
 
 
@@ -29,6 +43,7 @@
    import TodoItem from '../components/TodoItem.vue';
 
    export default {
+      
       components: {
          TodoIcons,
          TodoItem,
@@ -36,24 +51,25 @@
 
       data() {
          return {
-            title: 'To Do',
             tasks: [],
+            seperatingLists: true,
+            title: "Todo list",
          };
       },
 
       computed: {
          pendingTasks() {
-            return this.tasks.filter(task => task.done === false)
+            return this.tasks.filter(task => task.done === false);
          },
 
          doneTasks() {
-            return this.tasks.filter(task => task.done === true)
+            return this.tasks.filter(task => task.done === true);
          },
       },
 
       methods: {
          addTask() {
-            this.tasks.push({ id: this.create_id(), text: this.create_id(), done: false });
+            this.tasks.push({ id: this.createID(), text: '', done: false });
          },
 
          removeTask(task) {
@@ -66,7 +82,8 @@
             this.tasks[taskIndex].done = !this.tasks[taskIndex].done;
          },
 
-         create_id() {
+         // 
+         createID() {
             return Math.random().toString(36).slice(2);
          },
       },
@@ -76,36 +93,17 @@
 <style>
    .todo {
       position: relative;
-      width: 40vw;
-		height: 80vh;
-      top: 10px;
-      left: 800px;
+      width: 500px;
+      height: 400px;
       border: 2px solid red;
    }
 
    .todo__header {
-      position: relative;
-      height: 60px;
-   }
-
-   .todo__title {
-      position: relative;
-      left: 20px;
-      top: 10px;
+      display: flex;
    }
 
    .todo__content {
-      position: relative;
-      border: 2px solid red;
-      height: 500px;
+      overflow: scroll;
+      display: flex;
    }
-
-   .todo__items {
-      position: relative;
-      height: 20px;
-   }
-
-
-
-   
 </style>

@@ -1,15 +1,21 @@
 <template>
+
 	<Collapsible v-model:title="titles.contact">
 		<ContactForm />
 	</Collapsible>
 
 	<Collapsible v-model:title="titles.slideshow">
-			<Slideshow />
-		</Collapsible>
+		<Slideshow />
+	</Collapsible>
 
-		<Collapsible v-model:title="titles.quiz">
-			<Quizapp />
-		</Collapsible> 
+	<Collapsible v-model:title="titles.quiz">
+		<Quizapp />
+	</Collapsible> 
+
+	<Collapsible v-model:title="titles.todo">
+		<TodoList />
+	</Collapsible> 
+	
 </template>
 
 <script>
