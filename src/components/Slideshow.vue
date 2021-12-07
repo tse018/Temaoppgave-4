@@ -1,11 +1,11 @@
 <template>
 	<div class="slideshow">
 		<button @click="previousImage" class="slideshow__previous">
-			<i class="fas fa-arrow-left fa-4x"></i>
+			<i class="fas fa-arrow-left fa-3x"></i>
 		</button>
 
 		<button @click="nextImage" class="slideshow__next">
-			<i class="fas fa-arrow-right fa-4x"></i>
+			<i class="fas fa-arrow-right fa-3x"></i>
 		</button>
 
 		<div class="slideshow__information">
@@ -38,12 +38,12 @@ export default {
 			index: 0,
 			showDetails: false,
 			slides: [
-				{ title: 'firstImage', caption: 'bilde1', file: '../../assets/bilde1.jpeg' },
-				{ title: 'secondImage', caption: 'bilde2', file: '../../assets/.jpeg' },
-				{ title: 'thirdImage', caption: 'bilde3', file: '../../assets/.jpeg' },
-				{ title: 'fourthImage', caption: 'bilde4', file: '../../assets/.jpeg' },
-				{ title: 'fifthImage', caption: 'bilde5', file: '../../assets/.jpeg' },
-				{ title: 'sixthImage', caption: 'bilde6', file: '../../assets/.jpeg' },
+				{ title: 'firstImage', caption: 'picture1', file: 'assets/Picture01.jpg' },
+				{ title: 'secondImage', caption: 'picture2', file: 'assets/Picture2.jpg' },
+				{ title: 'thirdImage', caption: 'picture3', file: 'assets/Picture3.jpg' },
+				{ title: 'fourthImage', caption: 'picture4', file: 'assets/Picture4.jpg' },
+				{ title: 'fifthImage', caption: 'picture5', file: 'assets/Picture5.jpg' },
+				{ title: 'sixthImage', caption: 'picture6', file: 'assets/Picture6.jpg' },
 			],
 		};
 	},
@@ -74,30 +74,33 @@ export default {
 .slideshow {
 	margin: 0 auto;
 	position: relative;
-	top: 10;
-	width: 500px;
+	top: 1;
+	max-width: 550px;
 	bottom: 80px;
+	/* max-height: 350px; */
 }
 
 .slideshow__previous {
 	position: absolute;
-	top: 200px;
-	left: 10;
+	top: 45%;
+	left: 5%;
 	color: white;
 	cursor: pointer;
+	opacity: 0.5;
 }
 
 .slideshow__next {
 	position: absolute;
-	top: 200px;
-	left: 430px;
+	top: 45%;
+	right: 5%;
 	color: white;
 	cursor: pointer;
+	opacity: 0.5;
 }
 
 .slideshow__information {
 	position: absolute;
-	z-index: 100;
+	z-index: 10;
 }
 
 .slideshow__information--button {
@@ -109,14 +112,15 @@ export default {
 }
 
 .slideshow__container {
-	height: 640px;
-	width: 500px;
+	border: 2px solid #e5e5e5;
+	/* max-height: 350px; */
+
 }
 
 .slideshow__img {
-	object-fit: fill;
-	width: 100%;
-	height: 100%;
+	object-fit: cover;
+	/* max-height: 350px; */
+
 }
 
 .slideshow__figcaption {

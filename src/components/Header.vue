@@ -3,9 +3,9 @@
 		<div class="header__container">
 			<div class="header__logo">#Logo</div>
 			<nav class="nav">
-				<img class="nav__hamburger-menu" v-bind:class="{ toggle: !toggle }" @click="hamburgerOnClick" src="../../assets/hamburger-menu.svg" alt="" />
+				<img class="nav__hamburger-menu" v-bind:class="{ toggle: toggle }" @click="hamburgerOnClick" src="../../assets/hamburger-menu.svg" alt="" />
 
-				<img class="nav__hamburger-close" v-bind:class="{ toggle: toggle }" @click="hamburgerOnClick" src="../../assets/hamburger-close.svg" alt="" />
+				<img class="nav__hamburger-close" v-bind:class="{ toggle: !toggle }" @click="hamburgerOnClick" src="../../assets/hamburger-close.svg" alt="" />
 				
 				<ul
 					@click="hamburgerOnClick"
