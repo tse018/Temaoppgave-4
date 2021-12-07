@@ -1,55 +1,42 @@
 <template>
-   <button class="table__controller" @click="toggleSortOrder">
-      Click here to sort table: {{ sort.key }} ({{ sort.order.toUpperCase() }})
-   </button>
-
-   <table class="table">
-      <thead class="table__header">
-         <tr class="table__list">
-            <td class="table__item">
-
-               <button class="table__click" @click="sortBy('name')"> 
-                  Name
-               </button>
-
-            </td>
-
-            <td class="table__item">
-
-               <button @click="sortBy('year')"> 
-                  Year
-               </button>
-
-            </td>
-
-            <td class="table__item">
-
-               <button @click="sortBy('color')"> 
-                  Color
-               </button>
-
-            </td>
-
-            <td class="table__item">
-
-               <button @click="sortBy('country')"> 
-                  Country
-               </button>
-
-            </td>
-         </tr>
-      </thead>
-
-      <tbody class="table__value">
-         <tr v-for="row in naturalSort">
-
-            <td v-for="value in row">
-               {{ value }}
-            </td>
-
-         </tr>
-      </tbody>
-   </table>
+   <div class="table-container">
+      <button class="table__sort-button" @click="toggleSortOrder">
+         Click here to sort table: {{ sort.key }} ({{ sort.order.toUpperCase() }})
+      </button>
+      <table class="table">
+         <thead class="table__header">
+            <tr class="table__list">
+               <td class="table__item">
+                  <button class="table__click table__item--category-header" @click="sortBy('name')">
+                     Name
+                  </button>
+               </td>
+               <td class="table__item">
+                  <button class="table__item--category-header" @click="sortBy('year')">
+                     Year
+                  </button>
+               </td>
+               <td class="table__item">
+                  <button class="table__item--category-header" @click="sortBy('color')">
+                     Color
+                  </button>
+               </td>
+               <td class="table__item">
+                  <button class="table__item--category-header" @click="sortBy('country')">
+                     Country
+                  </button>
+               </td>
+            </tr>
+         </thead>
+         <tbody class="table__value">
+            <tr v-for="row in naturalSort">
+               <td class="table__value--item" v-for="value in row">
+                  {{ value }}
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
 </template>
 
 
@@ -131,8 +118,56 @@
 
 <style>
 .table-container {
+   max-width: 1440px;
+   margin: 0 auto;
+}
+.table {
+    border-collapse: collapse;
+    border-radius: 2px;
+}
+
+
+
+.table__item--category-header{
+   font-weight: bold;
+   padding: 1rem;
+}
+
+
+.table__sort-button {
+   background-color: black;
+   color: white;
+   width: 100%;
+   padding: 1rem;
+   font-weight: bold;
+   border-radius: 2px;
+    max-width: 550px;
+}
+
+.table__sort-button:hover {
+   background-color: rgb(80, 80, 80);
+   cursor: pointer;
+}
+
+.table-container {
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 550px;
+}
+
+.table {
+   max-width: 550px;
+	border: 2px solid #e5e5e5;
+   width: 100%;
+}
+
+.table__value--item {
+   border-bottom: 1px solid rgba(231, 231, 231, 0.63);
+   padding: 1rem
+}
+
+.table__item {
+  background-color: var(--primary);
+  font-weight: bold;
 }
 
 </style>

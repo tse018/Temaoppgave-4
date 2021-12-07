@@ -47,7 +47,10 @@ export default {
 	flex-direction: column;
 	margin: 0 auto;
 	max-width: 550px;
+	margin-bottom: 2rem;
 }
+
+
 
 .collapsible__top-container {
 	background: #efefef;
@@ -55,9 +58,15 @@ export default {
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
 
+.collapsible__top-container:last-child {
+	/* margin-bottom: 10rem; */
+}
+
 .collapsible__arrow {
 	display: inline-block;
 	padding: 0.8em 1em;
+	width: 100%;
+	text-align: left;
 }
 
 .collapsible__title {
@@ -68,8 +77,8 @@ export default {
 	font-size: 1.5rem;
 }
 
-/* @media (min-width: 500px) {
-	.contact {
-		background: red;
-	} */
+.collapsible__components:last-child {
+	
+}
+
 </style>

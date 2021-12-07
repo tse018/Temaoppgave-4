@@ -55,7 +55,7 @@ export default {
 .header {
 	background-color: var(--primary);
 	padding: 1rem;
-	margin-bottom: 4rem;
+	margin-bottom: 1rem;
 }
 
 .header__container {

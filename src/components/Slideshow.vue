@@ -10,7 +10,7 @@
 
 		<div class="slideshow__information">
 			<button @click="showDetails = !showDetails" class="slideshow__information--button">
-				<i class="fas fa-info fa-4x"></i>
+				<i class="fas fa-info fa-3x"></i>
 			</button>
 		</div>
 
@@ -87,6 +87,11 @@ export default {
 	color: white;
 	cursor: pointer;
 	opacity: 0.5;
+	
+}
+
+.slideshow__previous:hover {
+	opacity: 1;
 }
 
 .slideshow__next {
@@ -98,10 +103,18 @@ export default {
 	opacity: 0.5;
 }
 
+.slideshow__next:hover {
+	opacity: 1;
+}
+
 .slideshow__information {
 	position: absolute;
+	right: 15%;
 	z-index: 10;
+
+	
 }
+
 
 .slideshow__information--button {
 	position: absolute;
@@ -109,6 +122,12 @@ export default {
 	top: 10px;
 	color: white;
 	cursor: pointer;
+	opacity: 0.7;
+	
+}
+
+.slideshow__information--button:hover {
+	opacity: 1;
 }
 
 .slideshow__container {
@@ -130,10 +149,12 @@ export default {
 	left: 0;
 	right: 0;
 	text-align: center;
-	font-size: 40px;
-	color: white;
+	font-size: 2rem;
+	color: black;
 	border: 2px inset white;
 	border-right: none;
 	border-left: none;
+	background-color: var(--primary);
+	padding: 1rem;
 }
 </style>
