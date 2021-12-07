@@ -77,7 +77,6 @@ export default {
 	top: 1;
 	max-width: 550px;
 	bottom: 80px;
-	/* max-height: 350px; */
 }
 
 .slideshow__previous {
@@ -87,7 +86,6 @@ export default {
 	color: white;
 	cursor: pointer;
 	opacity: 0.5;
-	
 }
 
 .slideshow__previous:hover {
@@ -111,10 +109,7 @@ export default {
 	position: absolute;
 	right: 15%;
 	z-index: 10;
-
-	
 }
-
 
 .slideshow__information--button {
 	position: absolute;
@@ -123,7 +118,6 @@ export default {
 	color: white;
 	cursor: pointer;
 	opacity: 0.7;
-	
 }
 
 .slideshow__information--button:hover {
@@ -132,14 +126,10 @@ export default {
 
 .slideshow__container {
 	border: 2px solid #e5e5e5;
-	/* max-height: 350px; */
-
 }
 
 .slideshow__img {
 	object-fit: cover;
-	/* max-height: 350px; */
-
 }
 
 .slideshow__figcaption {

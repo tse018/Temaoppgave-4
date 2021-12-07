@@ -121,18 +121,16 @@
    max-width: 1440px;
    margin: 0 auto;
 }
+
 .table {
     border-collapse: collapse;
     border-radius: 2px;
 }
 
-
-
 .table__item--category-header{
    font-weight: bold;
    padding: 1rem;
 }
-
 
 .table__sort-button {
    background-color: black;
