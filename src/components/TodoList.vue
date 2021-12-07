@@ -92,10 +92,12 @@
 
 <style>
    .todo {
+      margin: 0 auto;
       position: relative;
       width: 500px;
       height: 400px;
       border: 2px solid red;
+
    }
 
    .todo__header {

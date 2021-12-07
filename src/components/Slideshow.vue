@@ -81,6 +81,7 @@ export default {
 
 <style>
 .slideshow {
+	margin: 0 auto;
 	position: relative;
 	top: 10;
 	width: 500px;

@@ -141,6 +141,7 @@ export default {
 
 <style>
 .contact {
+	margin: 0 auto;
 	position: relative;
 	width: 100%;
 	max-width: 550px;
@@ -205,6 +206,10 @@ export default {
 	background-color: black;
 	color: white;
 	cursor: pointer;
+}
+
+.contact__submit:hover {
+	background-color: rgb(80, 80, 80);
 }
 
 @media (min-width: 500px) {

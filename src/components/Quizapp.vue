@@ -1,8 +1,5 @@
 <template>
 	<div class="quiz-app">
-		<h2>
-			Quiz App
-		</h2>
 
 		<!-- Contains the current question determined by questionIndex. -->
 		<div class="quiz-app__question">
@@ -30,19 +27,29 @@
 			<p class="quiz-app__answers-container--answers" @click="checkAnswer">
 				{{ questionsList[questionIndex].answers[3] }}
 			</p> -->
-
-			<p @click="checkAnswer" class="quiz-app__answers-container--answers" v-for="question in currentQuestion.answers">
+			<p @click="nextQuestion" v-if="this.questionsList.length === questionIndex + 1" class="quiz-app__answers-container--answers-done"> Click here to start over!</p>
+			<p v-else @click="checkAnswer" class="quiz-app__answers-container--answers" v-for="question in currentQuestion.answers">
 				{{ question }}
 			</p>
 		</div>
 
 		<!-- Outputs whether the answer you clicked is correct or incorrect -->
-		<p>
+		<p class="quiz-app__output-text">
 			{{ outputText }}
 		</p>
 
-		<button @click="nextQuestion">
-			Next question
+		<button 
+		class="quiz-app__button"
+		v-if="this.questionsList.length === questionIndex + 1" 
+		@click="nextQuestion">
+			RESET
+		</button>
+
+		<button 
+		class="quiz-app__button"
+		v-else 
+		@click="nextQuestion"> 
+			Next Question 
 		</button>
 
 	</div>
@@ -87,6 +94,9 @@ export default {
 					],
 					correctAnswer: 'D',
 				},
+				{
+					question: 'All questions done.'
+				}
 			],
 
 			outputText: 'Output text here',
@@ -101,7 +111,7 @@ export default {
 	},
 
 	methods: {
-		//This logic can be done a lot easier with v-for, we have to change it later
+		//Removes the classes applied on click from the answer
 		checkAnswerForClass() {
 			const answers = document.querySelectorAll(
 				'.quiz-app__answers-container--answers'
@@ -133,6 +143,8 @@ export default {
 			} else {
 				this.questionIndex += 1;
 			}
+
+			this.outputText = "Output text here"
 		},
 
 		//Checks whether the first character in the answer you click matches with the correctAnswer in the current question (which is detirmed by the questionIndex)
@@ -155,25 +167,34 @@ export default {
 
 <style>
 .quiz-app {
-	position: relative;
+	margin: 0 auto;
 	top: 20px;
-	max-width: 400px;
-	background-color: lightgray;
-	border: 2px solid black;
+	max-width: 550px;
+	background-color: var(--primary);
+	border: 2px solid #e5e5e5;
 	border-radius: 2px;
+	padding: 1rem 0;
 }
 
 .quiz-app__question {
 	font-size: 1.5rem;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.151);
-	padding: 0.5rem;
+	padding: 1rem;
 }
 
+.quiz-app__answers-container--answers-done {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.151);
+	font-size: 2rem;
+	padding: 4.59rem;
+	font-weight: bold;
+	cursor: pointer;
+	background-color: white;
+}
 .quiz-app__answers-container--answers {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.151);
-	padding: 0.2rem 0;
-	padding: 0.5rem;
+	padding: 1rem;
 	cursor: pointer;
+	background-color: white;
 }
 
 .quiz-app__answers-container--answers:last-child {
@@ -190,5 +211,28 @@ export default {
 
 .quiz-app__answers-container--incorrect {
 	background: lightpink;
+}
+
+.quiz-app__output-text {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.151);
+	padding: 1rem;
+	background-color: white;
+	text-align: center;
+	font-weight: bold;
+}
+
+.quiz-app__button {
+	margin-top: 1.5rem;
+	width: 100%;
+	border-radius: 2px;
+	padding: 0.7em 1em;
+	background-color: black;
+	color: white;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.quiz-app__button:hover {
+	background-color: rgb(80, 80, 80);
 }
 </style>

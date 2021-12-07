@@ -10,7 +10,7 @@
 				<ul
 					@click="hamburgerOnClick"
 					class="nav__links-container"
-					v-bind:class="{ toggle: toggle }"
+					v-bind:class="{ toggle: !toggle }"
 				>
 					<li>
 						<router-link to="/">Home</router-link>
@@ -41,19 +41,11 @@ export default {
 	data() {
 		return {
 			toggle: true,
-			isTrue: true,
-			isFalse: false,
 		};
 	},
 	methods: {
 		hamburgerOnClick() {
-			if (this.toggle) {
-				this.toggle = this.isFalse;
-			} else {
-				this.toggle = this.isTrue;
-			}
-
-			console.log(this.toggle);
+			this.toggle = !this.toggle
 		},
 	},
 };
