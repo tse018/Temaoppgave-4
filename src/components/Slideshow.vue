@@ -39,11 +39,11 @@ export default {
 			showDetails: false,
 			slides: [
 				{ title: 'firstImage', caption: 'picture1', file: 'assets/Picture01.jpg' },
-				{ title: 'secondImage', caption: 'picture2', file: 'assets/Picture2.jpg' },
-				{ title: 'thirdImage', caption: 'picture3', file: 'assets/Picture3.jpg' },
-				{ title: 'fourthImage', caption: 'picture4', file: 'assets/Picture4.jpg' },
-				{ title: 'fifthImage', caption: 'picture5', file: 'assets/Picture5.jpg' },
-				{ title: 'sixthImage', caption: 'picture6', file: 'assets/Picture6.jpg' },
+				{ title: 'secondImage', caption: 'picture2', file: 'assets/Picture02.jpg' },
+				{ title: 'thirdImage', caption: 'picture3', file: 'assets/Picture03.jpg' },
+				{ title: 'fourthImage', caption: 'picture4', file: 'assets/Picture04.jpg' },
+				{ title: 'fifthImage', caption: 'picture5', file: 'assets/Picture05.jpg' },
+				{ title: 'sixthImage', caption: 'picture6', file: 'assets/Picture06.jpg' },
 			],
 		};
 	},
