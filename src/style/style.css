@@ -3,9 +3,8 @@
 body {
 	background: var(--background);
 	font-family: 'Roboto', sans-serif;
-	max-width: 1440px;
-	margin: 0 auto;
-	padding: 1rem;
+	/* max-width: 1440px;
+	margin: 0 auto; */
 }
 
 /* Scrollbar styling for the components */
