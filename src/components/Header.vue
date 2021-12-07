@@ -17,7 +17,11 @@
 					src="../../assets/hamburger-close.svg"
 					alt=""
 				/>
-				<ul class="nav__links-container" v-bind:class="{ toggle: toggle }">
+				<ul
+					@click="hamburgerOnClick"
+					class="nav__links-container"
+					v-bind:class="{ toggle: toggle }"
+				>
 					<li>
 						<router-link to="/">Home</router-link>
 					</li>
