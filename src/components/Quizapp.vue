@@ -12,23 +12,7 @@
 		(NOTE: This can be better solved with v-for, have to take a look at it )
 		-->
 		<div class="quiz-app__answers-container">
-			<!-- <p class="quiz-app__answers-container--answers" @click="checkAnswer">
-				{{ questionsList[questionIndex].answers[0] }}
-			</p>
-
-			<p class="quiz-app__answers-container--answers" @click="checkAnswer">
-				{{ questionsList[questionIndex].answers[1] }}
-			</p>
-
-			<p class="quiz-app__answers-container--answers" @click="checkAnswer">
-				{{ questionsList[questionIndex].answers[2] }}
-			</p>
-
-			<p class="quiz-app__answers-container--answers" @click="checkAnswer">
-				{{ questionsList[questionIndex].answers[3] }}
-			</p> -->
-			<p @click="nextQuestion" v-if="this.questionsList.length === questionIndex + 1" class="quiz-app__answers-container--answers-done"> Click here to start over!</p>
-			<p v-else @click="checkAnswer" class="quiz-app__answers-container--answers" v-for="question in currentQuestion.answers">
+			<p @click="checkAnswer" class="quiz-app__answers-container--answers" v-for="question in currentQuestion.answers">
 				{{ question }}
 			</p>
 		</div>
@@ -38,18 +22,12 @@
 			{{ outputText }}
 		</p>
 
-		<button 
-		class="quiz-app__button"
-		v-if="this.questionsList.length === questionIndex + 1" 
-		@click="nextQuestion">
-			RESET
+		<button v-if="this.questionsList.length === this.questionIndex + 1" @click="nextQuestion">
+			Reset
 		</button>
 
-		<button 
-		class="quiz-app__button"
-		v-else 
-		@click="nextQuestion"> 
-			Next Question 
+		<button @click="nextQuestion" v-else>
+			Next question
 		</button>
 
 	</div>
@@ -94,9 +72,9 @@ export default {
 					],
 					correctAnswer: 'D',
 				},
-				{
-					question: 'All questions done.'
-				}
+				{	
+					question: 'Click reset to start over'
+				},
 			],
 
 			outputText: 'Output text here',
@@ -144,7 +122,7 @@ export default {
 				this.questionIndex += 1;
 			}
 
-			this.outputText = "Output text here"
+			this.outputText = "output text here";
 		},
 
 		//Checks whether the first character in the answer you click matches with the correctAnswer in the current question (which is detirmed by the questionIndex)

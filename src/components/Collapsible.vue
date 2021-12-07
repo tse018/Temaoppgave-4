@@ -1,18 +1,17 @@
 <template>
 	<div class="collapsible">
 		<div class="collapsible__top-container">
-			<button
-				@click="toggleDetails"
-				:class="`collapsible__arrow fa-lg fas fa-chevron-circle-right${
-					!collapsed ? 'fas fa-caret-square-down' : ' '
-				}`"
-			>
+			<!-- toggleDetails checks if collapsed is true or false and decides whichever icon is rendered (based on fontawesome classes) -->
+			<button @click="toggleDetails" :class="`collapsible__arrow fa-lg fas fa-chevron-circle-right${!collapsed ? 'fas fa-caret-square-down' : ' '}`">
+
+				<!-- v-model {{ title is props and its value gets rendered from Home.vue }} -->
 				<div class="collapsible__title">
 					{{ title }}
 				</div>
 			</button>
 		</div>
 
+		<!-- slot takes content from another component and render its content inside when its collapsed -->
 		<div class="collapsible__components" v-if="!collapsed">
 			<slot />
 		</div>

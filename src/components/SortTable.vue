@@ -1,43 +1,55 @@
 <template>
-  
-    <div class="table-container">
-       <button class="table__controller" @click="toggleSortOrder">
-         Click here to sort table: {{ sort.key }} ({{ sort.order.toUpperCase() }})
-          </button>
-          <table class="table">
-         <thead class="table__header">
-            <tr class="table__list">
-               <td class="table__item">
-                  <button class="table__click" @click="sortBy('name')">
-                     Name
-                  </button>
-               </td>
-               <td class="table__item">
-                  <button @click="sortBy('year')">
-                     Year
-                  </button>
-               </td>
-               <td class="table__item">
-                  <button @click="sortBy('color')">
-                     Color
-                  </button>
-               </td>
-               <td class="table__item">
-                  <button @click="sortBy('country')">
-                     Country
-                  </button>
-               </td>
-            </tr>
-         </thead>
-         <tbody class="table__value">
-            <tr v-for="row in naturalSort">
-               <td v-for="value in row">
-                  {{ value }}
-               </td>
-            </tr>
-         </tbody>
-          </table>
-    </div>
+   <button class="table__controller" @click="toggleSortOrder">
+      Click here to sort table: {{ sort.key }} ({{ sort.order.toUpperCase() }})
+   </button>
+
+   <table class="table">
+      <thead class="table__header">
+         <tr class="table__list">
+            <td class="table__item">
+
+               <button class="table__click" @click="sortBy('name')"> 
+                  Name
+               </button>
+
+            </td>
+
+            <td class="table__item">
+
+               <button @click="sortBy('year')"> 
+                  Year
+               </button>
+
+            </td>
+
+            <td class="table__item">
+
+               <button @click="sortBy('color')"> 
+                  Color
+               </button>
+
+            </td>
+
+            <td class="table__item">
+
+               <button @click="sortBy('country')"> 
+                  Country
+               </button>
+
+            </td>
+         </tr>
+      </thead>
+
+      <tbody class="table__value">
+         <tr v-for="row in naturalSort">
+
+            <td v-for="value in row">
+               {{ value }}
+            </td>
+
+         </tr>
+      </tbody>
+   </table>
 </template>
 
 

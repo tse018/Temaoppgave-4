@@ -1,17 +1,19 @@
 <template>
    <div class="todo">
       <div class="todo__header">
-
+         
          <div class="todo__title">
             {{ title }}
          </div>
 
+         <!-- if font-icon is been clicked, method addTask will run -->
          <button @click="addTask">
             <TodoIcons :font="'add'" />
          </button>
       </div>
 
       <div class="todo__content">
+      
          <template v-if="tasks.length > 0 && seperatingLists">
             
             <div class="todo__items">
@@ -22,17 +24,24 @@
 
             <hr class="todo__seperator" v-if="doneTasks.length > 0 && pendingTasks.length > 0" />
 
-            <TodoItem @update="updateTask" @done="doneTask" @remove="removeTask" v-for="task in doneTasks" :task="task" />
+            <TodoItem @update="updateTask" @done="doneTask" @remove="removeTask" :task="task" v-for="task in doneTasks" />
 
          </template>
 
          <template v-else>
 
-            <TodoItem @update="updateTask" @done="doneTask" @remove="removeTask" v-for="task in tasks" :task="task" />
+            <!-- custom made events from emit - TodoItem triggers whenever user click on
+                  update, done or remove and each emit runs method functions
+            -->
+            <TodoItem @update="updateTask" @done="doneTask" @remove="removeTask" :task="task" v-for="task in tasks"/>
 
          </template>
          
-         <button v-if="tasks.length === 0" @click="addTask">Click to add a new task </button>
+         <!-- if tasks array is empty, shows this code -->
+         <button v-if="tasks.length === 0" @click="addTask">
+            Click to add a new task
+         </button>
+
       </div>
    </div>
 </template>
@@ -57,19 +66,23 @@
          };
       },
 
+      
       computed: {
+         // pendingTasks filter task array and returns a new array of undone tasks
          pendingTasks() {
             return this.tasks.filter(task => task.done === false);
          },
 
+         // doneTasks filter task array and returns a new array of all the done tasks
          doneTasks() {
             return this.tasks.filter(task => task.done === true);
          },
       },
 
       methods: {
+         // tasks get random id and added to the tasks array
          addTask() {
-            this.tasks.push({ id: this.createID(), text: '', done: false });
+            this.tasks.push({ id: this.createTaskID(), text: '', done: false });
          },
 
          removeTask(task) {
@@ -82,8 +95,8 @@
             this.tasks[taskIndex].done = !this.tasks[taskIndex].done;
          },
 
-         // 
-         createID() {
+         // makes random id, fancyyyyyy
+         createTaskID() {
             return Math.random().toString(36).slice(2);
          },
       },

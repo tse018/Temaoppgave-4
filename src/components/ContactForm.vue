@@ -1,102 +1,80 @@
 <template>
 	<form class="contact overflow-scrollbar">
 		<fieldset class="contact__field">
-			<legend class="contact__title">Report Any Issues</legend>
+			
+			<legend class="contact__title">
+				Report Any Issues
+			</legend>
 
-			<label class="contact__label" for="firstname"> First name </label>
+			<label class="contact__label" for="firstname">
+				First name
+			</label>
 
-			<input
-				class="contact__input"
-				type="text"
-				name="firstname"
-				placeholder="First name"
-				v-model="form.firstName"
-			/>
+			<input class="contact__input" type="text" name="firstname" placeholder="First name" v-model="form.firstName" />
 
-			<label class="contact__label" for="lastname"> Last name </label>
 
-			<input
-				class="contact__input"
-				type="text"
-				name="lastname"
-				placeholder="Last name"
-				v-model="form.lastName"
-			/>
+			<label class="contact__label" for="lastname">
+				Last name
+			</label>
+
+			<input class="contact__input" type="text" name="lastname" placeholder="Last name" v-model="form.lastName" />
 
 			<div class="contact__grouped-inputs">
+
 				<div class="contact__grouped-inputs--left">
+
 					<label class="contact__label contact__label--address" for="address">
 						Address
 					</label>
-					<input
-						class="contact__input contact__input--address"
-						type="text"
-						name="adress"
-						placeholder="Address"
-						v-model="form.address"
-					/>
+
+					<input class="contact__input contact__input--address" type="text" name="adress" placeholder="Address" v-model="form.address" />
+
 				</div>
 
 				<div class="contact__grouped-inputs--right">
-					<label
-						class="contact__label contact__label--zipcode"
-						for="postadress"
-					>
+
+					<label class="contact__label contact__label--zipcode" for="postadress">
 						Zip code
 					</label>
-					<input
-						class="contact__input contact__input--zipcode"
-						type="number"
-						name="postadress"
-						placeholder="Zip code"
-						v-model="form.postAdress"
-					/>
+
+					<input class="contact__input contact__input--zipcode" type="number" name="postadress" placeholder="Zip code" v-model="form.postAdress" />
 				</div>
 			</div>
 
-			<label class="contact__label" for="phonenumber"> Phonenumber </label>
+			<label class="contact__label" for="phonenumber">
+				Phonenumber
+			</label>
 
-			<input
-				class="contact__input"
-				type="number"
-				name="phonenumber"
-				placeholder="Phonenumber"
-				v-model="form.phoneNumber"
-			/>
+			<input class="contact__input" type="number" name="phonenumber" placeholder="Phonenumber" v-model="form.phoneNumber" />
 
-			<label class="contact__label" for="email"> E-Mail </label>
+			<label class="contact__label" for="email">
+				E-Mail
+			</label>
 
-			<input
-				class="contact__input"
-				type="text"
-				name="mail"
-				placeholder="E-Mail"
-				v-model="form.email"
-			/>
-
+			<input class="contact__input" type="text" name="mail" placeholder="E-Mail" v-model="form.email" />
+ 
 			<label class="contact__label contact__label--issue" for="issue">
 				Pick your issue listed below
 			</label>
 
 			<select class="contact__input contact__select" name="issues-options">
+				<!-- loops options and render all the issuses and v-bind:value to show in values attribute -->
 				<option v-bind:value="issues" v-for="(issues, index) in options.issues">
 					{{ issues }}
 				</option>
+
 			</select>
 
 			<label class="contact__label contact__label--textarea" for="message">
 				Additional information
 			</label>
 
-			<textarea
-				class="contact__input contact__input--textarea"
-				type="textarea"
-				name="message"
-				placeholder="Additional information"
-				v-model="form.message"
-			/>
+			<textarea class="contact__input contact__input--textarea" type="textarea" name="message" placeholder="Additional information" v-model="form.message" />
 
-			<button class="contact__submit" @click="submit_form">Submit</button>
+			<button class="contact__submit">
+				Submit
+			</button>
+
 		</fieldset>
 	</form>
 </template>
@@ -129,11 +107,6 @@ export default {
 				],
 			},
 
-			methods: {
-				submit_form() {
-					alart(`Thank you, ${this.firstName} + ${this.lastName}!`);
-				},
-			},
 		};
 	},
 };

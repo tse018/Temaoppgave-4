@@ -9,20 +9,13 @@
 		</button>
 
 		<div class="slideshow__information">
-			<button
-				@click="showDetails = !showDetails"
-				class="slideshow__information--button"
-			>
+			<button @click="showDetails = !showDetails" class="slideshow__information--button">
 				<i class="fas fa-info fa-4x"></i>
 			</button>
 		</div>
 
 		<figure class="slideshow__container">
-			<img
-				:src="currentSlide.file"
-				:alt="currentSlide.title"
-				class="slideshow__img"
-			/>
+			<img :src="currentSlide.file" :alt="currentSlide.title" class="slideshow__img" />
 
 			<figcaption v-if="showDetails" class="slideshow__figcaption">
 				{{ currentSlide.caption }}
@@ -30,12 +23,10 @@
 		</figure>
 
 		<div class="slideshow__dots">
-			<button
-				@click="goToIndex(index)"
-				v-for="(slide, index) in slides"
-				:aria-label="`Go to image ${index + 1}`"
-				class="slideshow__dot"
-			></button>
+			
+			<button @click="goToIndex(index)" v-for="(slide, index) in slides" :aria-label="`Go to image ${index + 1}`" class="slideshow__dot">
+			</button>
+
 		</div>
 	</div>
 </template>

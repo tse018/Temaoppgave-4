@@ -1,5 +1,5 @@
 <template>
-
+	<!-- data binding title props from Collapsible -->
 	<Collapsible v-model:title="titles.contact">
 		<ContactForm />
 	</Collapsible>
@@ -14,6 +14,10 @@
 
 	<Collapsible v-model:title="titles.todo">
 		<TodoList />
+	</Collapsible> 
+
+	<Collapsible v-model:title="titles.sorttable">
+		<SortTable />
 	</Collapsible> 
 	
 </template>
