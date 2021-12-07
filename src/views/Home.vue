@@ -1,4 +1,5 @@
 <template>
+	<Header />
 	<!-- data binding title props from Collapsible -->
 	<Collapsible v-model:title="titles.contact">
 		<ContactForm />
@@ -23,6 +24,7 @@
 </template>
 
 <script>
+import Header from '../components/Header.vue';
 import ContactForm from '../components/ContactForm.vue';
 import Slideshow from '../components/Slideshow.vue';
 import SortTable from '../components/SortTable.vue';
@@ -32,6 +34,7 @@ import Collapsible from '../components/Collapsible.vue';
 
 export default {
 	components: {
+		Header,
 		ContactForm,
 		Slideshow,
 		Quizapp,
