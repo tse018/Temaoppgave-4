@@ -3,13 +3,13 @@
 		<ContactForm />
 	</Collapsible>
 
-	<!-- <Collapsible v-model:title="titles.slideshow">
+	<Collapsible v-model:title="titles.slideshow">
 			<Slideshow />
 		</Collapsible>
 
 		<Collapsible v-model:title="titles.quiz">
 			<Quizapp />
-		</Collapsible> -->
+		</Collapsible> 
 </template>
 
 <script>
