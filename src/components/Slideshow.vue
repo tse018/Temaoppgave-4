@@ -77,6 +77,7 @@ export default {
 	top: 1;
 	max-width: 550px;
 	bottom: 80px;
+	border: var(--component-border)
 }
 
 .slideshow__previous {
