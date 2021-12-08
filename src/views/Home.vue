@@ -12,13 +12,15 @@
 		<Quizapp />
 	</Collapsible> 
 
+	<Collapsible v-model:title="titles.sorttable">
+		<SortTable />
+	</Collapsible> 
+
 	<Collapsible v-model:title="titles.todo">
 		<TodoList />
 	</Collapsible> 
 
-	<Collapsible v-model:title="titles.sorttable">
-		<SortTable />
-	</Collapsible> 
+
 	
 </template>
 
