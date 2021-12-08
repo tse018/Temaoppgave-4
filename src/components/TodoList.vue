@@ -1,48 +1,43 @@
 <template>
-   <div class="todo">
-      <div class="todo__header">
-         
-         <div class="todo__title">
-            {{ title }}
-         </div>
+   <div class="todo ">
+      <p @click="addTask" class="todo__empty-tasks" v-if="this.tasks.length === 0"> Your Tasks Are Empty, Click To Add New Task</p>
 
-         <!-- if font-icon is been clicked, method addTask will run -->
-         <button @click="addTask">
-            <TodoIcons :font="'add'" />
-         </button>
-      </div>
+      <div class="todo__content ">
 
-      <div class="todo__content">
-      
-         <template v-if="tasks.length > 0 && seperatingLists">
-            
-            <div class="todo__items">
-
-               <TodoItem @update="updateTask" @done="doneTask" @remove="removeTask" v-for="task in pendingTasks" :task="task" />
-
-            </div>
-
-            <hr class="todo__seperator" v-if="doneTasks.length > 0 && pendingTasks.length > 0" />
-
-            <TodoItem @update="updateTask" @done="doneTask" @remove="removeTask" :task="task" v-for="task in doneTasks" />
-
-         </template>
+            <template v-if="tasks.length > 0 && seperatingLists">
+               <div class="todo__items-container">
+                  <div class="todo__items">
+                     <TodoItem @update="updateTask" @done="doneTask" @remove="removeTask" v-for="task in pendingTasks" :task="task" />
+                  </div>
+                </div>
+               <!-- <hr class="todo__seperator" v-if="doneTasks.length > 0 && pendingTasks.length > 0" /> -->
+               <TodoItem @update="updateTask" @done="doneTask" @remove="removeTask" :task="task" v-for="task in doneTasks" />
+            </template>
+     
 
          <template v-else>
-
             <!-- custom made events from emit - TodoItem triggers whenever user click on
-                  update, done or remove and each emit runs method functions
-            -->
+                  update, done or remove and each emit runs method functions -->
             <TodoItem @update="updateTask" @done="doneTask" @remove="removeTask" :task="task" v-for="task in tasks"/>
-
          </template>
          
          <!-- if tasks array is empty, shows this code -->
-         <button v-if="tasks.length === 0" @click="addTask">
+         <!-- <button v-if="tasks.length === 0" @click="addTask">
             Click to add a new task
-         </button>
-
+         </button> -->
       </div>
+      
+      <!-- if font-icon is been clicked, method addTask will run -->
+      <div class="todo__add-task-container">
+           <div class="todo__add-task-container--fixed">
+               <button class="todo__add-task" @click="addTask">
+                  <div class="todo__add-task--items-container">
+                     <TodoIcons :font="'add'" />
+                    Add Task
+                  </div>
+               </button>
+            </div>  
+         </div>
    </div>
 </template>
 
@@ -105,20 +100,104 @@
 
 <style>
    .todo {
-      margin: 0 auto;
       position: relative;
-      width: 500px;
-      height: 400px;
-      border: 2px solid red;
-
-   }
-
-   .todo__header {
-      display: flex;
-   }
-
-   .todo__content {
+      margin: 0 auto;
+      max-width: 550px;
+      min-height: 400px;
+      max-height: 400px;
+      border: var(--component-border);
+      background-color: var(--primary);
       overflow: scroll;
+   }
+
+   .todo__empty-tasks {
+      font-size: 2rem;
+      color: rgb(134, 134, 134);
+      padding: 20% 5%;
+   }
+
+   .todo__add-task {
+      position: absolute;
+      bottom: 0;
+      background-color: black;
+      color: #E5E5E5;
+      padding: 0.6rem;
+      width: 100%;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1), inset 0px 4px 4px rgba(202, 202, 202, 0.1);
+      margin-bottom: 1rem;
+   }
+
+   .todo__add-task--items-container {
       display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.4rem;
+      font-weight: bold;
+   }
+
+   .todo__add-task:hover {
+      cursor: pointer;
+      background-color: rgb(59, 59, 59);
+   }
+
+   .todo__add-task--icon {
+      position: absolute;
+      left: 1rem;
+   }
+
+   .task {
+      display: flex;
+      flex-basis: 100%;
+      background-color: var(--primary);
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.151);
+   }
+
+   .todo__left-task-container {
+      display: flex;
+      align-items: center;
+   }
+
+   .todo__input {
+      border: none;
+      width: 100%;
+      background-color: var(--primary);
+      outline: none;
+      margin-left: 1rem;
+   }
+
+   .todo__done-task {
+      color: rgb(44, 44, 44);
+   }
+
+   .todo__done-task:hover {
+      color: rgb(117, 117, 117);
+   }
+
+   .todo__remove-task {
+       align-self: flex-end;
+       color: rgb(51, 51, 51);
+    }
+
+    .todo__remove-task:hover {
+       color: rgb(117, 117, 117);
+    }
+   
+   .todo__items-container {
+      border-bottom: 2px solid black;
+      margin-bottom: 1rem;
+   }
+      
+   .task:focus-within {
+         border-radius: 2px;
+   }
+
+
+   .task__done input{
+     text-decoration: line-through;
+     color: rgb(124, 124, 124);
    }
 </style>
