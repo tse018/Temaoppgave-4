@@ -9,72 +9,65 @@
 			<label class="contact__label" for="firstname">
 				First name
 			</label>
-
 			<input class="contact__input" type="text" name="firstname" placeholder="First name" v-model="form.firstName" />
 
 
 			<label class="contact__label" for="lastname">
 				Last name
 			</label>
-
 			<input class="contact__input" type="text" name="lastname" placeholder="Last name" v-model="form.lastName" />
 
+
 			<div class="contact__grouped-inputs">
-
 				<div class="contact__grouped-inputs--left">
-
 					<label class="contact__label contact__label--address" for="address">
 						Address
 					</label>
-
 					<input class="contact__input contact__input--address" type="text" name="adress" placeholder="Address" v-model="form.address" />
-
 				</div>
 
-				<div class="contact__grouped-inputs--right">
 
+				<div class="contact__grouped-inputs--right">
 					<label class="contact__label contact__label--zipcode" for="postadress">
 						Zip code
 					</label>
-
 					<input class="contact__input contact__input--zipcode" type="number" name="postadress" placeholder="Zip code" v-model="form.postAdress" />
 				</div>
 			</div>
 
+
 			<label class="contact__label" for="phonenumber">
 				Phonenumber
 			</label>
-
 			<input class="contact__input" type="number" name="phonenumber" placeholder="Phonenumber" v-model="form.phoneNumber" />
+
 
 			<label class="contact__label" for="email">
 				E-Mail
 			</label>
-
 			<input class="contact__input" type="text" name="mail" placeholder="E-Mail" v-model="form.email" />
  
+
 			<label class="contact__label contact__label--issue" for="issue">
 				Pick your issue listed below
 			</label>
-
 			<select class="contact__input contact__select" name="issues-options">
 				<!-- loops options and render all the issuses and v-bind:value to show in values attribute -->
 				<option v-bind:value="issues" v-for="(issues, index) in options.issues">
 					{{ issues }}
 				</option>
-
 			</select>
+
 
 			<label class="contact__label contact__label--textarea" for="message">
 				Additional information
 			</label>
-
 			<textarea class="contact__input contact__input--textarea" type="textarea" name="message" placeholder="Additional information" v-model="form.message" />
+
 
 			<button class="contact__submit">
 				Submit
 			</button>
-
 		</fieldset>
 	</form>
 </template>
@@ -122,7 +115,7 @@ export default {
 	background-color: var(--primary);
 	padding: 1rem;
 	height: 80vh;
-	border: 2px solid #e5e5e5;
+	border: var(--component-border)
 }
 
 .contact__field {
@@ -150,6 +143,7 @@ export default {
 	width: 100%;
 	font-size: 1rem;
 	border: 2px solid #b3b3b3;
+	outline: none;
 }
 
 .contact__input:focus {
@@ -175,10 +169,11 @@ export default {
 	margin-top: 1.5rem;
 	width: 100%;
 	border-radius: 2px;
-	padding: 0.7em 1em;
+	padding: 1em 1em;
 	background-color: black;
 	color: white;
 	cursor: pointer;
+	font-weight: bold;
 }
 
 .contact__submit:hover {
