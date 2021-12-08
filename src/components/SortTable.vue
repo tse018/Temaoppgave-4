@@ -3,7 +3,7 @@
       <button class="table__sort-button" @click="toggleSortOrder">
          Click here to sort table: {{ sort.key }} ({{ sort.order.toUpperCase() }})
       </button>
-      <table class="table">
+      <table class="table overflow-scrollbar">
          <thead class="table__header">
             <tr class="table__list">
                <td class="table__item">
@@ -117,26 +117,11 @@
 
 
 <style>
-.table-container {
-   max-width: 1440px;
-   margin: 0 auto;
-}
-
-.table {
-    border-collapse: collapse;
-    border-radius: 2px;
-}
-
-.table__item--category-header{
-   font-weight: bold;
-   padding: 1rem;
-}
-
 .table__sort-button {
    background-color: black;
    color: white;
    width: 100%;
-   padding: 1rem;
+   padding: 1em;
    font-weight: bold;
    border-radius: 2px;
     max-width: 550px;
@@ -146,6 +131,25 @@
    background-color: rgb(80, 80, 80);
    cursor: pointer;
 }
+
+.table-container {
+   max-width: 550px;
+   margin: 0 auto;
+}
+
+.table {
+    border-collapse: collapse;
+    border-radius: 2px;
+    height: 80vh;
+    border: var(--component-border)
+}
+
+.table__item--category-header{
+   font-weight: bold;
+   padding: 1rem;
+}
+
+
 
 .table-container {
   margin: 0 auto;
@@ -166,6 +170,16 @@
 .table__item {
   background-color: var(--primary);
   font-weight: bold;
+}
+
+@media (max-width: 395px) {
+  .table__item--category-header{
+   padding: 0.5rem;
+}
+
+   .table__value--item {
+      padding: 1rem 0.5rem;
+   }
 }
 
 </style>
