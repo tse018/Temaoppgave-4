@@ -2,28 +2,31 @@
    <!-- if task is done, then put it in task__done, 
       otherwise don´t do anything 
    -->
-   <div :class="`task ${task.done ? 'task__done' : ''}`">
+ 
+      <div :class="`task ${task.done ? 'task__done' : ''}`">
+  
 
       <!-- emit methods gets triggered whenever user clicks on font-icon   -->
-      <button @click="eventDone" class="task__button" aria-label="Done">
-         <TodoIcons :font="'done'" /> 
-      </button>
-
-      <div class="task__writeTask">
-      <!-- 
-         :ref is added so it can be used to register what task input user write
-         and returns as a object.
-      -->
-
-         <input :ref="task.id" type="text" v-model="task.text" placeholder="Add a new task" />
-
+      <div class="todo__left-task-container">
+         <button @click="eventDone" class="task__button" aria-label="Done">
+            <TodoIcons :font="'done'" />
+         </button>
+         <div class="task__writeTask">
+         <!--
+            :ref is added so it can be used to register what task input user write
+            and returns as a object.
+         -->
+            <input v-on:keyup.enter="onEnter()" class="todo__input" :ref="task.id" type="text" v-model="task.text" placeholder="Add a new task" />
+         </div>
       </div>
 
       <!-- emit method gets triggered whenever user clicks on font-icon  -->
 
-      <button @click="eventRemove" class="task__button" aria-label="Remove">
-         <TodoIcons :font="'remove'" />
-      </button>
+      <div class="todo__right-task-container">
+         <button @click="eventRemove" class="task__button" aria-label="Remove">
+            <TodoIcons :font="'remove'" />
+         </button>
+      </div>
 
    </div>
 </template>
@@ -65,6 +68,10 @@
          eventRemove() {
             this.$emit('remove', this.task);
          },
+
+         onEnter(){
+            event.target.blur();
+         }
       },
    };
 </script>
