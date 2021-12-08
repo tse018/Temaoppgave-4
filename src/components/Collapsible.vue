@@ -50,16 +50,10 @@ export default {
 	margin-bottom: 2rem;
 }
 
-
-
 .collapsible__top-container {
 	background: #efefef;
 	border-radius: 2px;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-}
-
-.collapsible__top-container:last-child {
-	/* margin-bottom: 10rem; */
 }
 
 .collapsible__arrow {
@@ -76,9 +70,4 @@ export default {
 	margin-left: 1rem;
 	font-size: 1.5rem;
 }
-
-.collapsible__components:last-child {
-	
-}
-
 </style>
