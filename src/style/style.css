@@ -30,3 +30,9 @@ body {
 .overflow-scrollbar::-webkit-scrollbar-track {
 	display: none;
 }
+
+@media only screen and (max-width: 540px) {
+	.wrapper {
+		padding: 1rem;
+	}
+}

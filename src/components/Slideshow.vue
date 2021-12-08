@@ -23,10 +23,7 @@
 		</figure>
 
 		<div class="slideshow__dots">
-			
-			<button @click="goToIndex(index)" v-for="(slide, index) in slides" :aria-label="`Go to image ${index + 1}`" class="slideshow__dot">
-			</button>
-
+			<button @click="goToIndex(index)" v-for="(slide, index) in slides" :aria-label="`Go to image ${index + 1}`" class="slideshow__dot"></button>
 		</div>
 	</div>
 </template>
@@ -38,12 +35,12 @@ export default {
 			index: 0,
 			showDetails: false,
 			slides: [
-				{ title: 'firstImage', caption: 'picture1', file: 'assets/Picture01.jpg' },
-				{ title: 'secondImage', caption: 'picture2', file: 'assets/Picture02.jpg' },
-				{ title: 'thirdImage', caption: 'picture3', file: 'assets/Picture03.jpg' },
-				{ title: 'fourthImage', caption: 'picture4', file: 'assets/Picture04.jpg' },
-				{ title: 'fifthImage', caption: 'picture5', file: 'assets/Picture05.jpg' },
-				{ title: 'sixthImage', caption: 'picture6', file: 'assets/Picture06.jpg' },
+				{ title: 'Lake in the forest', caption: 'Beautiful lake in the forest - Canada', file: 'assets/Picture01.jpg' },
+				{ title: 'Forest tree tops', caption: 'Beautiful lake in the forest - Canada', file: 'assets/Picture02.jpg' },
+				{ title: 'Bulgy looking mountains with grass', caption: 'Beautiful lake in the forest - Canada', file: 'assets/Picture03.jpg' },
+				{ title: 'Thick green forest', caption: 'Beautiful lake in the forest - Canada', file: 'assets/Picture04.jpg' },
+				{ title: 'Cabin in a field of white flowers', caption: 'Beautiful lake in the forest - Canada', file: 'assets/Picture05.jpg' },
+				{ title: 'River beach in the forest', caption: 'Beautiful lake in the forest - Canada', file: 'assets/Picture06.jpg' },
 			],
 		};
 	},
@@ -72,11 +69,10 @@ export default {
 
 <style>
 .slideshow {
-	margin: 0 auto;
 	position: relative;
-	top: 1;
-	max-width: 550px;
-	bottom: 80px;
+	top: 0;
+	margin: 0 auto;
+	max-width: var(--component-width);
 	border: var(--component-border)
 }
 
@@ -109,7 +105,6 @@ export default {
 .slideshow__information {
 	position: absolute;
 	right: 15%;
-	z-index: 10;
 }
 
 .slideshow__information--button {
@@ -125,26 +120,15 @@ export default {
 	opacity: 1;
 }
 
-.slideshow__container {
-	border: 2px solid #e5e5e5;
-}
-
-.slideshow__img {
-	object-fit: cover;
-}
-
 .slideshow__figcaption {
 	position: absolute;
-	width: 100%;
 	bottom: 20;
-	left: 0;
 	right: 0;
+	width: 100%;
 	text-align: center;
-	font-size: 2rem;
-	color: black;
-	border: 2px inset white;
-	border-right: none;
-	border-left: none;
+	font-size: 1rem;
+	color: rgb(73, 73, 73);
+	opacity: 0.9;
 	background-color: var(--primary);
 	padding: 1rem;
 }

@@ -117,43 +117,36 @@
 
 
 <style>
-.table__sort-button {
-   background-color: black;
-   color: white;
-   width: 100%;
-   padding: 1em;
-   font-weight: bold;
-   border-radius: 2px;
-    max-width: 550px;
-}
-
-.table__sort-button:hover {
-   background-color: rgb(80, 80, 80);
-   cursor: pointer;
-}
-
 .table-container {
-   max-width: 550px;
+   max-width: var(--component-width);
    margin: 0 auto;
 }
 
+.table__sort-button {
+   padding: 1em;
+   max-width: var(--component-width);
+   width: 100%;
+   background-color: var(--component-button-background);
+   color: var(--component-button-color);
+   font-weight: bold;
+   border-radius: 2px;
+}
+
+.table__sort-button:hover {
+   background-color: var(--component-button-hover);
+   cursor: pointer;
+}
+
 .table {
-    border-collapse: collapse;
-    border-radius: 2px;
-    height: 80vh;
-    border: var(--component-border)
+   height: 80vh;
+   border-collapse: collapse;
+   border-radius: 2px;
+   border: var(--component-border)
 }
 
 .table__item--category-header{
    font-weight: bold;
    padding: 1rem;
-}
-
-
-
-.table-container {
-  margin: 0 auto;
-  max-width: 550px;
 }
 
 .table {

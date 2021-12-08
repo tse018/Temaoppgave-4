@@ -2,4 +2,10 @@
 	--background: #fafafa;
 	--primary: #efefef;
 	--component-border: 2px solid #e5e5e5;
+	--component-background: #efefef;
+	--component-width: 550px;
+	--component-button-background: rgb(26, 26, 26);
+	--component-button-color: rgb(245, 245, 245);
+	--component-button-hover: rgb(80, 80, 80);
+	
 }

@@ -7,26 +7,27 @@
 
 				<img class="nav__hamburger-close" v-bind:class="{ toggle: !toggle }" @click="hamburgerOnClick" src="../../assets/hamburger-close.svg" alt="" />
 				
-				<ul
-					@click="hamburgerOnClick"
-					class="nav__links-container"
-					v-bind:class="{ toggle: !toggle }"
-				>
+				<ul @click="hamburgerOnClick" class="nav__links-container" v-bind:class="{ toggle: !toggle }">
 					<li>
 						<router-link to="/">Home</router-link>
 					</li>
+
 					<li>
 						<router-link to="/contactform">Contact form</router-link>
 					</li>
+
 					<li>
 						<router-link to="/quizapp">Quiz app</router-link>
 					</li>
+
 					<li>
 						<router-link to="slideshow">Slideshow</router-link>
 					</li>
+
 					<li>
 						<router-link to="sorttable">Sort table</router-link>
 					</li>
+
 					<li>
 						<router-link to="/todolist">Todo list</router-link>
 					</li>
@@ -59,11 +60,11 @@ export default {
 }
 
 .header__container {
-	max-width: 1440px;
-	margin: 0 auto;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	max-width: 1440px;
+	margin: 0 auto;
 }
 
 .header__logo {
@@ -115,14 +116,6 @@ a:hover {
 
 	.nav__links-container li + li {
 		margin-top: 1rem;
-	}
-
-	.nav__hamburger-menu {
-		display: none;
-	}
-
-	.nav__hamburger-close {
-		display: none;
 	}
 
 	.toggle {

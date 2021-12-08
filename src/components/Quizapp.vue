@@ -12,11 +12,13 @@
 		(NOTE: This can be better solved with v-for, have to take a look at it )
 		-->
 		<div class="quiz-app__answers-container">
-			<p v-if="this.questionsList.length === this.questionIndex + 1" @click="nextQuestion" class="quiz-app__answers-container--answers-end"> Click here to reset </p>
-
-			<p v-else @click="checkAnswer" class="quiz-app__answers-container--answers" v-for="question in currentQuestion.answers">
+			<!-- Checks if we are NOT at the end of questionsList, by using computed value in endOfQuestions -->
+			<p v-if="!endOfQuestions" @click="checkAnswer" class="quiz-app__answers-container--answers" v-for="question in currentQuestion.answers">
 				{{ question }}
 			</p>
+
+			<!-- Renders if we are at the end of questionsList -->
+			<p v-else @click="nextQuestion" class="quiz-app__answers-container--answers-end"> Click here to reset </p>
 		</div>
 
 		<!-- Outputs whether the answer you clicked is correct or incorrect -->
@@ -24,14 +26,13 @@
 			{{ outputText }}
 		</p>
 
-		<button class="quiz-app__button" v-if="this.questionsList.length === this.questionIndex + 1" @click="nextQuestion">
-			Reset
-		</button>
-
-		<button class="quiz-app__button" @click="nextQuestion" v-else>
+		<button v-if="!endOfQuestions" @click="nextQuestion"  class="quiz-app__button"  >
 			Next question
 		</button>
 
+		<button v-else @click="nextQuestion" class="quiz-app__button" >
+			Reset
+		</button>
 	</div>
 </template>
 
@@ -39,7 +40,7 @@
 export default {
 	data() {
 		return {
-			//Variable used to iterate between the
+			//Value used to iterate between the questions
 			questionIndex: 0,
 
 			//Contains all the questions which gets iterated by questionIndex.
@@ -79,7 +80,7 @@ export default {
 				},
 			],
 
-			outputText: 'No more questions',
+			outputText: 'Output text here',
 		};
 	},
 
@@ -88,9 +89,42 @@ export default {
 		currentQuestion() {
 			return this.questionsList[this.questionIndex];
 		},
+
+		//computes a boolean value used in the logic to check whether we're at the last question or not
+		endOfQuestions() {
+			return this.questionsList.length === this.questionIndex + 1;
+		}
 	},
 
 	methods: {
+		//Changes to the next question and resets questionIndex when you are at the end of the questionList.
+		nextQuestion() {
+			this.checkAnswerForClass();
+
+			if (this.questionsList.length - 1 <= this.questionIndex) {
+				this.questionIndex = 0;
+			} else {
+				this.questionIndex += 1;
+			}
+
+			this.outputText = "Output text here";
+		},
+
+		//Checks whether the first character in the answer you click matches with the correctAnswer in the current question (which is determined by the questionIndex)
+		checkAnswer(event) {
+			const clickedElement = event.target.innerText.charAt(0);
+			const correctAnswer =
+				this.questionsList[this.questionIndex].correctAnswer;
+
+			if (clickedElement === correctAnswer) {
+				this.outputText = 'Correct answer';
+				event.target.classList.add('quiz-app__answers-container--correct');
+			} else {
+				this.outputText = 'Incorrect answer';
+				event.target.classList.add('quiz-app__answers-container--incorrect');
+			}
+		},
+
 		//Removes the classes applied on click from the answer
 		checkAnswerForClass() {
 			const answers = document.querySelectorAll(
@@ -113,34 +147,6 @@ export default {
 				}
 			});
 		},
-
-		//Changes to the next question and resets questionIndex when you are at the end of the questionList.
-		nextQuestion() {
-			this.checkAnswerForClass();
-
-			if (this.questionsList.length - 1 <= this.questionIndex) {
-				this.questionIndex = 0;
-			} else {
-				this.questionIndex += 1;
-			}
-
-			this.outputText = "Output text here";
-		},
-
-		//Checks whether the first character in the answer you click matches with the correctAnswer in the current question (which is detirmed by the questionIndex)
-		checkAnswer(event) {
-			const clickedElement = event.target.innerText.charAt(0);
-			const correctAnswer =
-				this.questionsList[this.questionIndex].correctAnswer;
-
-			if (clickedElement === correctAnswer) {
-				this.outputText = 'Correct answer';
-				event.target.classList.add('quiz-app__answers-container--correct');
-			} else {
-				this.outputText = 'Incorrect answer';
-				event.target.classList.add('quiz-app__answers-container--incorrect');
-			}
-		},
 	},
 };
 </script>
@@ -148,33 +154,33 @@ export default {
 <style>
 .quiz-app {
 	margin: 0 auto;
-	top: 20px;
-	max-width: 550px;
+	padding: 1rem 0;
+	max-width: var(--component-width);
 	background-color: var(--primary);
 	border: var(--component-border);
 	border-radius: 2px;
-	padding: 1rem 0;
 }
 
 .quiz-app__question {
+	padding: 1rem;
 	font-size: 1.5rem;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.151);
-	padding: 1rem;
 }
 
 .quiz-app__answers-container--answers-end {
+	margin-bottom: 1rem;
+	padding: 5.6rem 1rem;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.151);
 	font-size: 2rem;
-	padding: 5.6rem 1rem;
 	font-weight: bold;
 	cursor: pointer;
 	background-color: white;
-	margin-bottom: 1rem;
 	text-align: center;
 }
+
 .quiz-app__answers-container--answers {
-	border-bottom: 1px solid rgba(0, 0, 0, 0.151);
 	padding: 1rem;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.151);
 	cursor: pointer;
 	background-color: white;
 }
@@ -196,11 +202,12 @@ export default {
 }
 
 .quiz-app__output-text {
-	border-bottom: 1px solid rgba(0, 0, 0, 0.151);
 	padding: 1rem;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.151);
 	background-color: white;
 	text-align: center;
 	font-style: italic;
+	color: rgb(104, 103, 103);
 }
 
 .quiz-app__button {
@@ -208,13 +215,13 @@ export default {
 	width: 100%;
 	border-radius: 2px;
 	padding: 1em 1em;
-	background-color: black;
-	color: white;
+	background-color: var(--component-button-background);
+	color: var(--component-button-color);
 	cursor: pointer;
 	font-weight: bold;
 }
 
 .quiz-app__button:hover {
-	background-color: rgb(80, 80, 80);
+	background-color: var(--component-button-hover);
 }
 </style>

@@ -1,7 +1,6 @@
 <template>
 	<form class="contact overflow-scrollbar">
 		<fieldset class="contact__field">
-			
 			<legend class="contact__title">
 				Report Any Issues
 			</legend>
@@ -31,7 +30,7 @@
 					<label class="contact__label contact__label--zipcode" for="postadress">
 						Zip code
 					</label>
-					<input class="contact__input contact__input--zipcode" type="number" name="postadress" placeholder="Zip code" v-model="form.postAdress" />
+					<input class="contact__input contact__input--zipcode" type="number" name="postadress" placeholder="Zip code" v-model="form.postAddress" />
 				</div>
 			</div>
 
@@ -80,7 +79,7 @@ export default {
 				firstName: null,
 				lastName: null,
 				address: null,
-				postAdress: null,
+				postAddress: null,
 				birthday: null,
 				phoneNumber: null,
 				email: null,
@@ -107,11 +106,10 @@ export default {
 
 <style>
 .contact {
-	margin: 0 auto;
 	position: relative;
+	margin: 0 auto;
 	width: 100%;
-	max-width: 550px;
-	font-size: 1rem;
+	max-width: var(--component-width);
 	background-color: var(--primary);
 	padding: 1rem;
 	height: 80vh;
@@ -119,21 +117,16 @@ export default {
 }
 
 .contact__field {
-	border: 2px solid #555;
-	padding: 1rem;
-	margin-top: 1rem;
+	border: 2px solid rgb(119, 119, 119);
+	padding: 2rem 1rem;
 }
 
 .contact__title {
-	margin-left: 10px;
-	font-size: 1rem;
 	font-weight: bold;
 }
 
 .contact__label {
 	display: block;
-	margin-bottom: 0rem;
-	font-size: 1rem;
 }
 
 .contact__input {
@@ -141,7 +134,6 @@ export default {
 	padding: 0.5rem;
 	border-radius: 2px;
 	width: 100%;
-	font-size: 1rem;
 	border: 2px solid #b3b3b3;
 	outline: none;
 }
@@ -150,9 +142,7 @@ export default {
 	border: 2px solid #555;
 }
 
-/* -webkit-appearance:none - Removes the default arrow on select taken from: https://stackoverflow.com/questions/16603979/how-to-remove-the-default-arrow-icon-from-a-dropdown-list-select-element */
 .contact__select {
-	display: block;
 	-webkit-appearance: none;
 	background: url('http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png')
 		white no-repeat 96%;
@@ -160,24 +150,23 @@ export default {
 
 /* Styles textarea input */
 .contact__input--textarea {
-	display: block;
-	width: 100%;
 	min-height: 10rem;
+	resize: none;
 }
 
 .contact__submit {
 	margin-top: 1.5rem;
 	width: 100%;
 	border-radius: 2px;
-	padding: 1em 1em;
-	background-color: black;
-	color: white;
-	cursor: pointer;
+	padding: 1em;
+	background-color: var(--component-button-background);
+	color: var(--component-button-color);
 	font-weight: bold;
+	cursor: pointer;
 }
 
 .contact__submit:hover {
-	background-color: rgb(80, 80, 80);
+	background-color: var(--component-button-hover)
 }
 
 @media (min-width: 500px) {

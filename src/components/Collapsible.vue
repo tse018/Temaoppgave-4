@@ -45,22 +45,21 @@ export default {
 .collapsible {
 	display: flex;
 	flex-direction: column;
-	margin: 0 auto;
-	max-width: 550px;
-	margin-bottom: 2rem;
+	margin: 0 auto 2rem auto;
+	max-width: var(--component-width);
 }
 
 .collapsible__top-container {
-	background: #efefef;
+	background: var(--component-background);
 	border-radius: 2px;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
 
 .collapsible__arrow {
-	display: inline-block;
 	padding: 0.8em 1em;
 	width: 100%;
 	text-align: left;
+	cursor: pointer;
 }
 
 .collapsible__title {

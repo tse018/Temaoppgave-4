@@ -1,5 +1,5 @@
 <template>
-   <div class="todo ">
+   <div class="todo">
       <p @click="addTask" class="todo__empty-tasks" v-if="this.tasks.length === 0"> Your Tasks Are Empty, Click To Add New Task</p>
 
       <div class="todo__content ">
@@ -29,14 +29,12 @@
       
       <!-- if font-icon is been clicked, method addTask will run -->
       <div class="todo__add-task-container">
-           <div class="todo__add-task-container--fixed">
                <button class="todo__add-task" @click="addTask">
                   <div class="todo__add-task--items-container">
                      <TodoIcons :font="'add'" />
                     Add Task
                   </div>
                </button>
-            </div>  
          </div>
    </div>
 </template>
@@ -102,9 +100,8 @@
    .todo {
       position: relative;
       margin: 0 auto;
-      max-width: 550px;
+      max-width: var(--component-width);
       min-height: 400px;
-      max-height: 400px;
       border: var(--component-border);
       background-color: var(--primary);
       overflow: scroll;
@@ -148,11 +145,11 @@
    .task {
       display: flex;
       flex-basis: 100%;
-      background-color: var(--primary);
-      width: 100%;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       padding: 1rem;
+      width: 100%;
+      background-color: var(--primary);
       border-bottom: 1px solid rgba(0, 0, 0, 0.151);
    }
 
