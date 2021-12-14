@@ -17,7 +17,7 @@
 			</p>
 
 			<!-- Renders if we are at the end of questionsList -->
-			<p v-else @click="nextQuestion()" class="quiz__answer--end"> Click here to reset </p>
+			<p v-else @click="nextQuestion(index)" class="quiz__answer--end"> Click here to reset </p>
 		</div>
 
 		<!-- Outputs whether the answer you clicked is correct or incorrect -->
@@ -35,6 +35,7 @@
 export default {
 	data() {
 		return {
+			correctClicked: false,
 			//Array created with refs, used to reset the classes on next question
 			itemRefs: [],
 
@@ -105,29 +106,39 @@ export default {
 
 	
 		//Changes to the next question and resets index when you are at the end of the questionList.
-		nextQuestion() {
-			this.resetsInputs();
-			if (this.questionsList.length <= this.index) {
-				this.index = 0;
+		nextQuestion(index) {
+			if(index === this.questionsList.length || this.correctClicked) {
+				this.resetsInputs();
+				if (this.questionsList.length <= this.index) {
+					this.index = 0;
+				} else {
+					this.index += 1;
+				}
 			} else {
-				this.index += 1;
-			}
+				this.output = "You must get the right answer first"
+			};
 		},
 
 		//Checks whether the first character in the answer you click matches with the correctAnswer in the current question (which is determined by the index)
 		checkAnswer(index) {
-				
+			if(this.correctClicked) {
+				return;
+			}
 			const answerCheck = index === this.correctAnswer;
 			this.renderOutput(answerCheck)
-			event.target.classList.add(answerCheck ? 'quiz__answer--correct' : 'quiz__answer--incorrect')
-			
+
+			if(answerCheck) {
+				event.target.classList.add('quiz__answer--correct');
+				this.correctClicked = true;
+			} else {
+				event.target.classList.add('quiz__answer--incorrect')
+			}
 		},
 
+		//Decides what output to render depending on the boolean value of answerCheck
 		renderOutput(answerCheck) {
 			const output = answerCheck ? 'Correct Answer!' : 'Incorrect Answer, Try Again!';
-
 			this.output = output
-			
 		},
 
 		//Removes the classes applied on click from the answer
@@ -142,6 +153,7 @@ export default {
 		
 			this.itemRefs = [];
 			this.output = "Output here"
+			this.correctClicked = false;
 		},
 	},
 };
