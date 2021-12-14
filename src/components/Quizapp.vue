@@ -12,12 +12,12 @@
 		-->
 		<div class="quiz__answers">
 			<!-- Checks if we are NOT at the end of questionsList, by using computed value in endOfQuestions -->
-			<p  v-if="!endOfQuestions" @click="checkAnswer(index)" class="quiz__answer" v-for="(answer, index) in currentQuestion.answers" :ref="setItemRef" >
+			<button v-if="!endOfQuestions" @click="checkAnswer(index)" class="quiz__answer" v-for="(answer, index) in currentQuestion.answers" :ref="setItemRef" >
 				{{ answer }}
-			</p>
+			</button>
 
 			<!-- Renders if we are at the end of questionsList -->
-			<p v-else @click="nextQuestion(index)" class="quiz__answer--end"> Click here to reset </p>
+			<button v-else @click="nextQuestion(index)" class="quiz__answer--end"> Click here to reset </button>
 		</div>
 
 		<!-- Outputs whether the answer you clicked is correct or incorrect -->
@@ -107,6 +107,7 @@ export default {
 	
 		//Changes to the next question and resets index when you are at the end of the questionList.
 		nextQuestion(index) {
+			event.target.blur()
 			if(index === this.questionsList.length || this.correctClicked) {
 				this.resetsInputs();
 				if (this.questionsList.length <= this.index) {
@@ -176,8 +177,9 @@ export default {
 }
 
 .quiz__answer--end {
+	width: 100%;
 	margin-bottom: 1rem;
-	padding: 5.6rem 1rem;
+	padding: 5.28rem 1rem;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.151);
 	font-size: 2rem;
 	font-weight: bold;
@@ -187,6 +189,9 @@ export default {
 }
 
 .quiz__answer {
+	display: block;
+	width: 100%;
+	text-align: left;
 	padding: 1rem;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.151);
 	cursor: pointer;
@@ -231,5 +236,19 @@ export default {
 
 .quiz__button:hover {
 	background-color: var(--component-button-hover);
+}
+
+.quiz__button:active {
+	background-color: rgb(70, 70, 70);
+}
+
+/* Removes the sticky hover effect on touch devices */
+@media only screen and (max-width: 1024px) {
+	.quiz__button:hover {
+		background-color:var(--component-button-background);
+	}
+	.quiz__button:active {
+	background-color: rgb(70, 70, 70);
+}
 }
 </style>
