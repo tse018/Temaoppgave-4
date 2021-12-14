@@ -1,37 +1,32 @@
 <template>
-	<div class="quiz-app">
-
-		<!-- Contains the current question determined by questionIndex. -->
-		<div class="quiz-app__question">
+	<div class="quiz">
+		<!-- Contains the current question determined by index. -->
+		<div class="quiz__question">
 			<p>
-				{{ questionsList[questionIndex].question }}
+				{{ !endOfQuestions ? questionsList[index].question : "No more questions" }}
 			</p>
 		</div>
 
 		<!-- Contains all the clickable answer choices, depending on which question you are currently on.
 		(NOTE: This can be better solved with v-for, have to take a look at it )
 		-->
-		<div class="quiz-app__answers-container">
+		<div class="quiz__answers">
 			<!-- Checks if we are NOT at the end of questionsList, by using computed value in endOfQuestions -->
-			<p v-if="!endOfQuestions" @click="checkAnswer" class="quiz-app__answers-container--answers" v-for="question in currentQuestion.answers">
-				{{ question }}
+			<p  v-if="!endOfQuestions" @click="checkAnswer(index)" class="quiz__answer" v-for="(answer, index) in currentQuestion.answers" :ref="setItemRef" >
+				{{ answer }}
 			</p>
 
 			<!-- Renders if we are at the end of questionsList -->
-			<p v-else @click="nextQuestion" class="quiz-app__answers-container--answers-end"> Click here to reset </p>
+			<p v-else @click="nextQuestion()" class="quiz__answer--end"> Click here to reset </p>
 		</div>
 
 		<!-- Outputs whether the answer you clicked is correct or incorrect -->
-		<p class="quiz-app__output-text">
-			{{ outputText }}
+		<p class="quiz__output-text">
+			{{ !endOfQuestions ? this.output : 'No more questions' }}
 		</p>
 
-		<button v-if="!endOfQuestions" @click="nextQuestion"  class="quiz-app__button"  >
-			Next question
-		</button>
-
-		<button v-else @click="nextQuestion" class="quiz-app__button" >
-			Reset
+		<button @click="nextQuestion(index, answer)"  class="quiz__button"  >
+			{{!endOfQuestions ? 'Next question' : 'Reset'}}
 		</button>
 	</div>
 </template>
@@ -40,20 +35,24 @@
 export default {
 	data() {
 		return {
-			//Value used to iterate between the questions
-			questionIndex: 0,
+			//Array created with refs, used to reset the classes on next question
+			itemRefs: [],
 
-			//Contains all the questions which gets iterated by questionIndex.
+			//Value used to iterate between the questions
+			index: 0,
+
+			//Contains all the questions which gets iterated by index.
 			questionsList: [
 				{
 					question: 'Who invented JavaScript?',
 					answers: [
+						
 						'A. Dennis Ritchie',
 						'B. Guido van Rossum',
 						'C. Brendan Eich',
 						'D. Bjarne Stroustrup',
 					],
-					correctAnswer: 'C',
+					correctAnswer: 2,
 				},
 				{
 					question: 'Who invented Vue?',
@@ -63,7 +62,7 @@ export default {
 						'C. Misko Hevery',
 						'D. Rich Harris',
 					],
-					correctAnswer: 'A',
+					correctAnswer: 0,
 				},
 				{
 					question: 'Who invented CSS?',
@@ -73,86 +72,83 @@ export default {
 						'C. Tim Berners Lee',
 						'D. Håkon Wium Lie',
 					],
-					correctAnswer: 'D',
-				},
-				{	
-					question: 'No more questions'
+					correctAnswer: 3,
 				},
 			],
 
-			outputText: 'Output text here',
+			output: 'Output here'
 		};
 	},
 
 	computed: {
 		//computes the current question
 		currentQuestion() {
-			return this.questionsList[this.questionIndex];
+			return this.questionsList[this.index];
 		},
 
 		//computes a boolean value used in the logic to check whether we're at the last question or not
 		endOfQuestions() {
-			return this.questionsList.length === this.questionIndex + 1;
-		}
+			return this.questionsList.length === this.index;
+		},
+
+		correctAnswer() {
+			return this.questionsList[this.index].correctAnswer;
+		},
 	},
 
 	methods: {
-		//Changes to the next question and resets questionIndex when you are at the end of the questionList.
-		nextQuestion() {
-			this.checkAnswerForClass();
-
-			if (this.questionsList.length - 1 <= this.questionIndex) {
-				this.questionIndex = 0;
-			} else {
-				this.questionIndex += 1;
+		setItemRef(el) {
+			if (el) {
+				this.itemRefs.push(el)
 			}
-
-			this.outputText = "Output text here";
 		},
 
-		//Checks whether the first character in the answer you click matches with the correctAnswer in the current question (which is determined by the questionIndex)
-		checkAnswer(event) {
-			const clickedElement = event.target.innerText.charAt(0);
-			const correctAnswer =
-				this.questionsList[this.questionIndex].correctAnswer;
-
-			if (clickedElement === correctAnswer) {
-				this.outputText = 'Correct answer';
-				event.target.classList.add('quiz-app__answers-container--correct');
+	
+		//Changes to the next question and resets index when you are at the end of the questionList.
+		nextQuestion() {
+			this.resetsInputs();
+			if (this.questionsList.length <= this.index) {
+				this.index = 0;
 			} else {
-				this.outputText = 'Incorrect answer';
-				event.target.classList.add('quiz-app__answers-container--incorrect');
+				this.index += 1;
 			}
+		},
+
+		//Checks whether the first character in the answer you click matches with the correctAnswer in the current question (which is determined by the index)
+		checkAnswer(index) {
+				
+			const answerCheck = index === this.correctAnswer;
+			this.renderOutput(answerCheck)
+			event.target.classList.add(answerCheck ? 'quiz__answer--correct' : 'quiz__answer--incorrect')
+			
+		},
+
+		renderOutput(answerCheck) {
+			const output = answerCheck ? 'Correct Answer!' : 'Incorrect Answer, Try Again!';
+
+			this.output = output
+			
 		},
 
 		//Removes the classes applied on click from the answer
-		checkAnswerForClass() {
-			const answers = document.querySelectorAll(
-				'.quiz-app__answers-container--answers'
-			);
-
-			answers.forEach((element) => {
-				const elementClassCorrect = element.classList.contains(
-					'quiz-app__answers-container--correct'
-				);
-
-				const elementClassIncorrect = element.classList.contains(
-					'quiz-app__answers-container--incorrect'
-				);
-
-				if (elementClassCorrect) {
-					element.classList.remove('quiz-app__answers-container--correct');
-				} else if (elementClassIncorrect) {
-					element.classList.remove('quiz-app__answers-container--incorrect');
-				}
-			});
+		resetsInputs() {
+			// this.$refs.setRef.classList.add("quiz__answer--incorrect")
+			if(!this.endOfQuestions) {
+			this.itemRefs.forEach(answer => {
+				answer.classList.remove('quiz__answer--incorrect')
+				answer.classList.remove('quiz__answer--correct')
+			})
+			}
+		
+			this.itemRefs = [];
+			this.output = "Output here"
 		},
 	},
 };
 </script>
 
 <style>
-.quiz-app {
+.quiz {
 	margin: 0 auto;
 	padding: 1rem 0;
 	max-width: var(--component-width);
@@ -161,13 +157,13 @@ export default {
 	border-radius: 2px;
 }
 
-.quiz-app__question {
+.quiz__question {
 	padding: 1rem;
 	font-size: 1.5rem;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.151);
 }
 
-.quiz-app__answers-container--answers-end {
+.quiz__answer--end {
 	margin-bottom: 1rem;
 	padding: 5.6rem 1rem;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.151);
@@ -178,30 +174,30 @@ export default {
 	text-align: center;
 }
 
-.quiz-app__answers-container--answers {
+.quiz__answer {
 	padding: 1rem;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.151);
 	cursor: pointer;
 	background-color: white;
 }
 
-.quiz-app__answers-container--answers:last-child {
+.quiz__answer:last-child {
 	margin-bottom: 1rem;
 }
 
-.quiz-app__answers-container--answers:active {
+.quiz__answer:active {
 	background: rgb(139, 139, 139);
 }
 
-.quiz-app__answers-container--correct {
+.quiz__answer--correct {
 	background: lightgreen;
 }
 
-.quiz-app__answers-container--incorrect {
+.quiz__answer--incorrect {
 	background: lightpink;
 }
 
-.quiz-app__output-text {
+.quiz__output-text {
 	padding: 1rem;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.151);
 	background-color: white;
@@ -210,7 +206,7 @@ export default {
 	color: rgb(104, 103, 103);
 }
 
-.quiz-app__button {
+.quiz__button {
 	margin-top: 1.5rem;
 	width: 100%;
 	border-radius: 2px;
@@ -221,7 +217,7 @@ export default {
 	font-weight: bold;
 }
 
-.quiz-app__button:hover {
+.quiz__button:hover {
 	background-color: var(--component-button-hover);
 }
 </style>
