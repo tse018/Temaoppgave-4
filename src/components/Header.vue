@@ -7,29 +7,29 @@
 
 				<img class="nav__hamburger-close" v-bind:class="{ toggle: !toggle }" @click="hamburgerOnClick" src="../../assets/hamburger-close.svg" alt="" />
 				
-				<ul @click="hamburgerOnClick" class="nav__links-container" v-bind:class="{ toggle: !toggle }">
+				<ul @click="hamburgerOnClick" class="nav__links" v-bind:class="{ toggle: !toggle }">
 					<li>
-						<router-link to="/">Home</router-link>
+						<router-link class="nav__link" to="/">Home</router-link>
 					</li>
 
 					<li>
-						<router-link to="/contactform">Contact form</router-link>
+						<router-link class="nav__link" to="/contactform">Contact form</router-link>
 					</li>
 
 					<li>
-						<router-link to="/quizapp">Quiz app</router-link>
+						<router-link class="nav__link" to="/quizapp">Quiz app</router-link>
 					</li>
 
 					<li>
-						<router-link to="slideshow">Slideshow</router-link>
+						<router-link class="nav__link" to="slideshow">Slideshow</router-link>
 					</li>
 
 					<li>
-						<router-link to="sorttable">Sort table</router-link>
+						<router-link class="nav__link" to="sorttable">Sort table</router-link>
 					</li>
 
 					<li>
-						<router-link to="/todolist">Todo list</router-link>
+						<router-link class="nav__link" to="/todolist">Todo list</router-link>
 					</li>
 				</ul>
 			</nav>
@@ -81,18 +81,19 @@ export default {
 	width: 44px;
 }
 
-.nav__links-container {
+.nav__links {
 	display: flex;
 	gap: 1rem;
 	justify-content: center;
 }
 
-a {
+.nav__link {
 	color: black;
 	font-weight: bold;
 	text-decoration: none;
 }
-a:hover {
+
+.nav__link:hover {
 	color: #7a7a7a;
 	text-decoration: underline;
 }
@@ -101,7 +102,7 @@ a:hover {
 	.nav__hamburger-menu {
 		width: 44px;
 	}
-	.nav__links-container {
+	.nav__links {
 		position: absolute;
 		z-index: 900;
 		top: 75;
@@ -114,7 +115,7 @@ a:hover {
 		text-align: center;
 	}
 
-	.nav__links-container li + li {
+	.nav__links li + li {
 		margin-top: 1rem;
 	}
 
