@@ -16,7 +16,7 @@
             :ref is added so it can be used to register what task input user write
             and returns as a object.
          -->
-            <input v-on:keyup.enter="onEnter()" class="todo__input" :ref="task.id" type="text" v-model="task.text" placeholder="Add a new task" />
+            <input v-on:keyup.enter="onEnter" class="todo__input" :ref="task.id" type="text" v-model="task.text" placeholder="Add a new task" />
          </div>
       </div>
 
@@ -69,7 +69,7 @@
             this.$emit('remove', this.task);
          },
 
-         onEnter(){
+         onEnter(event){
             event.target.blur();
          }
       },
