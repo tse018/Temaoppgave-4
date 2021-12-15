@@ -1,5 +1,5 @@
 <template>
-	<form class="contact overflow-scrollbar">
+	<form @submit.prevent="submitForm" class="contact overflow-scrollbar">
 		<fieldset class="contact__field">
 			<legend class="contact__title">
 				Report Any Issues
@@ -98,8 +98,12 @@ export default {
 					'None of the above',
 				],
 			},
-
 		};
+	},
+	methods: {
+		submitForm() {
+				alert("Thank you for submitting")
+		}
 	},
 };
 </script>
