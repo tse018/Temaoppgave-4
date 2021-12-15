@@ -249,6 +249,6 @@ export default {
 	}
 	.quiz__button:active {
 	background-color: rgb(70, 70, 70);
-}
+	}
 }
 </style>
