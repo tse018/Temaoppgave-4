@@ -104,7 +104,6 @@
       min-height: 400px;
       border: var(--component-border);
       background-color: var(--primary);
-      overflow: scroll;
    }
 
    .todo__empty-tasks {
